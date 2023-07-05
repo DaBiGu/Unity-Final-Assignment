@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Localization>
+    <Entry>
+        <Key>Title</Key>
+        <Value>HalfCooked! - 占位符</Value>
+    </Entry>
+    <Entry>
+        <Key>Start</Key>
+        <Value>开始</Value>
+    </Entry>
+    <Entry>
+        <Key>Quit</Key>
+        <Value>退出</Value>
+    </Entry>
+    <Entry>
+        <Key>LanguageSwitchText</Key>
+        <Value>语言: 中文 (中国)</Value>
+    </Entry>
+</Localization>
