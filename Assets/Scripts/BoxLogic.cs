@@ -8,8 +8,12 @@ public class BoxLogic : MonoBehaviour
     Transform spawnPoint;
     [SerializeField]
     GameObject foodPrefab;
-    void OpenBox()
+    public void OpenBox()
     {
         Instantiate(foodPrefab, spawnPoint.position, Quaternion.identity);
+    }
+    public GameObject GetFoodType()
+    {
+        return foodPrefab;
     }
 }

@@ -25,6 +25,7 @@ public class ProgressBarLogic : MonoBehaviour
     const float MAX_HEALTH = 100;
     float timeCount;
     bool progressComplete;
+    bool progressStarted;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,11 +42,13 @@ public class ProgressBarLogic : MonoBehaviour
         }
         progressBarImage.color = new Color(0, 255, 0);
         progressComplete = false;
+        progressStarted = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!progressStarted) return;
         if (type == ProgressBarType.cook)
         {
             timeCount += Time.deltaTime;
@@ -87,4 +90,9 @@ public class ProgressBarLogic : MonoBehaviour
     {
         return progressComplete;
     }   
+    // Start the progress
+    public void StartProgress()
+    {
+        progressStarted = true;
+    }
 }

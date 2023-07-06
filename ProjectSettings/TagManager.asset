@@ -4,13 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Table
-  - Stove
-  - Crate
-  - Sink
-  - Trashcan
-  - Stage
-  - SceneObjects
+  - Food Box
+  - Cooker
+  - Plate
+  - Food
   layers:
   - Default
   - TransparentFX
