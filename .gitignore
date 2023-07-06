@@ -6,3 +6,6 @@ Temp
 obj
 Assembly-CSharp
 UserSettings
+Assembly-CSharp.csproj
+ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
+UserSettings/Layouts/default-2022.dwlt
