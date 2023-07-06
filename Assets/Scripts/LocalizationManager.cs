@@ -21,6 +21,7 @@ public class LocalizationManager : MonoBehaviour
     const Language FallbackLang = Language.en_US;
 
     LocString[] m_locStrings;
+    LocImageMat[] m_locImageMats;
 
     readonly Dictionary<Language, TextAsset> m_localizationFiles = new();
     Dictionary<string, string> m_localizationData = new();
@@ -97,6 +98,11 @@ public class LocalizationManager : MonoBehaviour
         }
     }
 
+    public Material GetLocImageMat(string key)
+    {
+        return Resources.Load("Images/Materials/" + key + "_" + m_currentLanguage.ToString()) as Material;
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -113,6 +119,7 @@ public class LocalizationManager : MonoBehaviour
         SetupLocalizationFiles();
         SetupLocalizationData();
         m_locStrings = FindObjectsOfType<LocString>();
+        m_locImageMats = FindObjectsOfType<LocImageMat>();
     }
 
     public void ChangeLanguageFile()
@@ -124,6 +131,10 @@ public class LocalizationManager : MonoBehaviour
         foreach (LocString locString in m_locStrings)
         {
             locString.UpdateLocText();
+        }
+        foreach (LocImageMat locImageMat in m_locImageMats)
+        {
+            locImageMat.UpdateLocImageMat();
         }
     }
 }

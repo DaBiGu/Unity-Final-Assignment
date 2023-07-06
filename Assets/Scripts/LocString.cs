@@ -37,7 +37,7 @@ public class LocString : MonoBehaviour
 
     public void UpdateLocText()
     {
-                if (m_TMP && !string.IsNullOrEmpty(m_key))
+        if (m_TMP && !string.IsNullOrEmpty(m_key))
         {
             m_TMP.text = LocalizationManager.Instance.GetLocString(m_key);
             Debug.Log(m_TMP.text);
