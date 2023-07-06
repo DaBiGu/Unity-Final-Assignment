@@ -4,8 +4,8 @@ Logs
 Library
 Temp
 obj
-Assembly-CSharp
+Assembly-CSharp*
 UserSettings
-Assembly-CSharp.csproj
 ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
 UserSettings/Layouts/default-2022.dwlt
+Assembly-CSharp.csproj

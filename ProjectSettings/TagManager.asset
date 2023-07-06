@@ -4,7 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Gun
+  - Table
+  - Stove
+  - Crate
+  - Sink
+  - Trashcan
+  - Stage
+  - SceneObjects
   layers:
   - Default
   - TransparentFX
