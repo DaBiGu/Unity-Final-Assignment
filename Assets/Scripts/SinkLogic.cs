@@ -12,6 +12,10 @@ public class SinkLogic : MonoBehaviour
     GameObject fullSinkPrefab;
     [SerializeField]
     Transform plateSpawnPoint;
+    [SerializeField]
+    GameObject platePrefab;
+    [SerializeField]
+    GameObject progressBar;
     int plateCount;
     // Start is called before the first frame update
     void Start()
@@ -24,7 +28,10 @@ public class SinkLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (progressBar.GetComponent<ProgressBarLogic>().GetProgressComplete())
+        {
+            SpawnPlate();
+        }
     }
     public void AddPlate()
     {
@@ -37,8 +44,12 @@ public class SinkLogic : MonoBehaviour
     }
     public void WashPlate()
     {
+        progressBar.GetComponent<ProgressBarLogic>().StartProgress();
+    }
+    public void SpawnPlate()
+    {
         plateCount--;
-        Instantiate(plateSpawnPoint, plateSpawnPoint.position, plateSpawnPoint.rotation);
+        Instantiate(platePrefab, plateSpawnPoint.position, plateSpawnPoint.rotation);
         if (plateCount == 0)
         {
             Destroy(gameObject);

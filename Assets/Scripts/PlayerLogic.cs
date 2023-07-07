@@ -76,6 +76,10 @@ public class PlayerLogic : MonoBehaviour
                     }
                 }
             }
+            else if (Input.GetButtonDown("Action"))
+            {
+                hit.collider.GetComponent<SinkLogic>().WashPlate();
+            }
         }
         else if (hit.collider.tag == "Table")
         {
