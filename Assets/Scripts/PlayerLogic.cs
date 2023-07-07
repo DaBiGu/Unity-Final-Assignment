@@ -128,6 +128,7 @@ public class PlayerLogic : MonoBehaviour
                 {
                     GameObject target = hit.collider.GetComponent<TableLogic>().TakeObject();
                     objectInHand = target;
+                    Instantiate(target, spawnPoint.position, spawnPoint.rotation);
                 }
             }
         }
