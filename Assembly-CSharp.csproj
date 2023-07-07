@@ -68,6 +68,7 @@
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\Scripts\UIFixedIcon.cs" />
     <Compile Include="Assets\Scripts\PlayerLogic.cs" />
+    <Compile Include="Assets\Scripts\IKControlLogic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
     <Compile Include="Assets\Scripts\TableLogic.cs" />
     <Compile Include="Assets\Scripts\MainMenuLogic.cs" />

@@ -17,20 +17,20 @@ public class TableLogic : MonoBehaviour
 
     public void PlaceObject(GameObject target)
     {
-        objectOnTable = target;
-        Vector3 targetPos = transform.position + new Vector3(0, 0.5f, 0);
-        Instantiate(target, targetPos, transform.rotation);
+        Vector3 targetPos = transform.position + new Vector3(0, 2.5f, 0);
+        objectOnTable = Instantiate(target, targetPos, transform.rotation);
     }
     public GameObject TakeObject()
     {
-        GameObject target = objectOnTable;
+        GameObject target = null;
         if (objectOnTable != null)
         {
-            Instantiate(objectOnTable, spawnPoint.position, spawnPoint.rotation);
+            target = Instantiate(objectOnTable, spawnPoint.position, spawnPoint.rotation);
+            target.transform.SetParent(spawnPoint.transform);
             Debug.Log("Food taken.");
+            Destroy(objectOnTable);
+            objectOnTable = null;
         }
-        Destroy(objectOnTable);
-        objectOnTable = null;
         return target;
     }
 

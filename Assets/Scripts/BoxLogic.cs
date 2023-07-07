@@ -11,7 +11,7 @@ public class BoxLogic : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
     }
-    public void OpenBox()
+    public GameObject OpenBox()
     {
         Transform spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
         GameObject food = Instantiate(foodPrefab, spawnPoint.position, spawnPoint.rotation);
@@ -24,6 +24,7 @@ public class BoxLogic : MonoBehaviour
             Debug.Log("Instantiation Failed.");
         }
         food.transform.SetParent(spawnPoint);
+        return food;
     }
     public GameObject GetFoodType()
     {

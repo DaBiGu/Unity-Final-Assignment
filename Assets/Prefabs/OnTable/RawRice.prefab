@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RawRice
       objectReference: {fileID: 0}
+    - target: {fileID: 433480677289632161, guid: dea6d5e34b481bc41a7635bbb23d5219, type: 3}
+      propertyPath: m_TagString
+      value: Food
+      objectReference: {fileID: 0}
     - target: {fileID: 959223622787431195, guid: dea6d5e34b481bc41a7635bbb23d5219, type: 3}
       propertyPath: m_RootOrder
       value: 0

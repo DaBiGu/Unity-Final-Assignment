@@ -65,9 +65,9 @@ public class PlayerLogic : MonoBehaviour
             if (Input.GetButtonDown("Pick_" + playerID) && objectInHand == null)
             {
                 Debug.Log("Tried to Pick from: " + hit.collider.name);
-                hit.collider.GetComponent<BoxLogic>().OpenBox();
+                objectInHand = hit.collider.GetComponent<BoxLogic>().OpenBox();
 
-                objectInHand = hit.collider.GetComponent<BoxLogic>().GetFoodType();
+                // objectInHand = hit.collider.GetComponent<BoxLogic>().GetFoodType();
             }
         }
         else if (hit.collider.CompareTag("Cooker"))
@@ -119,16 +119,17 @@ public class PlayerLogic : MonoBehaviour
         {
             if (Input.GetButtonDown("Pick_" + playerID))
             {
-                if (objectInHand.CompareTag("Plate"))
-                {
-                    hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
-                    Destroy(objectInHand);
-                }
-                else if (objectInHand == null)
+                if (objectInHand == null)
                 {
                     GameObject target = hit.collider.GetComponent<TableLogic>().TakeObject();
                     objectInHand = target;
-                    Instantiate(target, spawnPoint.position, spawnPoint.rotation);
+                    // Instantiate(target, spawnPoint.position, spawnPoint.rotation);
+                }
+                else if (objectInHand.CompareTag("Plate") || objectInHand.CompareTag("Food"))
+                {
+                    hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
+                    Destroy(objectInHand);
+                    objectInHand = null;
                 }
             }
         }
