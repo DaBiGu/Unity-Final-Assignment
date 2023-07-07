@@ -11,7 +11,6 @@ TagManager:
   - Goal
   - Sink
   - Table
-  - Stove
   layers:
   - Default
   - TransparentFX

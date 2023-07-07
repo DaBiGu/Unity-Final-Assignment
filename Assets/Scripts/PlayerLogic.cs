@@ -1,4 +1,3 @@
-using CodeMonkey.HealthSystemCM;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,14 +6,10 @@ public class PlayerLogic : MonoBehaviour
 {
     [SerializeField]
     Transform spawnPoint;
-    [SerializeField]
-    int playerID;
-
     CharacterController characterController;
     Animator animator;
     GameObject objectInHand;
-    Vector3 movement, rotation;
-    Vector3 raycastOffset;
+    Vector3 movement;
     RaycastHit hit;
     float horizontalInput;
     float verticalInput;
@@ -25,80 +20,54 @@ public class PlayerLogic : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         objectInHand = null;
-        raycastOffset = new Vector3(0f, -1f, 0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal_" + playerID);
-        verticalInput = Input.GetAxis("Vertical_" + playerID);
-        PickUp();
-    }
-    void FixedUpdate()
-    {
-
-        movement.x = horizontalInput * MOVEMENT_SPEED * Time.deltaTime;
-        movement.z = verticalInput * MOVEMENT_SPEED * Time.deltaTime;
-        characterController.Move(movement);
-        rotation.x = Input.GetAxisRaw("Horizontal_" + playerID);
-        rotation.z = Input.GetAxisRaw("Vertical_" + playerID);
-        if (rotation != Vector3.zero) 
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        Physics.Raycast(transform.position, transform.forward, out hit);
+        if (hit.collider.tag == "Food Box")
         {
-            transform.LookAt(transform.position + rotation);
-        }
-    }
-
-    void PickUp()
-    {
-        float pickUpRange = 3f;
-        bool isHit = Physics.Raycast(transform.position + raycastOffset, transform.forward, out hit, pickUpRange);
-        if (!isHit)
-        {
-            return;
-        }
-        if (hit.collider.CompareTag("Food Box"))
-        {
-            if (Input.GetButtonDown("Pick_" + playerID) && objectInHand == null)
+            if (Input.GetButtonDown("Pick") && objectInHand == null)
             {
-                Debug.Log("Tried to Pick from: " + hit.collider.name);
                 hit.collider.GetComponent<BoxLogic>().OpenBox();
-
                 objectInHand = hit.collider.GetComponent<BoxLogic>().GetFoodType();
             }
         }
-        else if (hit.collider.CompareTag("Cooker"))
+        else if (hit.collider.tag == "Cooker")
         {
-            GameObject cooker = hit.collider.GetComponent<StoveLogic>().GetCooker();
-            if (Input.GetButtonDown("Pick_" + playerID))
+            if (Input.GetButtonDown("Pick"))
             {
-                if (objectInHand.CompareTag("Food"))
+                if (objectInHand.tag == "Food")
                 {
-                    cooker.GetComponent<CookerLogic>().DropFood(objectInHand);
+                    hit.collider.GetComponent<CookerLogic>().DropFood(objectInHand);
                     Destroy(objectInHand);
                 }
-                else if (objectInHand.CompareTag("Plate"))
+                else if (objectInHand.tag == "Plate")
                 {
-                    objectInHand.GetComponent<PlateLogic>().GetFood(cooker.GetComponent<CookerLogic>().TakeFood());
+                    objectInHand.GetComponent<PlateLogic>().GetFood(
+                        hit.collider.GetComponent<CookerLogic>().TakeFood());
                 }
             }
         }
-        else if (hit.collider.CompareTag("Goal"))
+        else if (hit.collider.tag == "Goal")
         {
-            if (Input.GetButtonDown("Pick_" + playerID))
+            if (Input.GetButtonDown("Pick"))
             {
-                if (objectInHand.CompareTag("Plate"))
+                if (objectInHand.tag == "Plate")
                 {
                     hit.collider.GetComponent<GoalLogic>().DeliverOrder(
                         objectInHand.GetComponent<PlateLogic>().GetPlateStatus());
                 }
             }
         }
-        else if (hit.collider.CompareTag("Sink"))
+        else if (hit.collider.tag == "Sink")
         {
-            if (Input.GetButtonDown("Pick_" + playerID))
+            if (Input.GetButtonDown("Pick"))
             {
-                if (objectInHand.CompareTag("Plate"))
+                if (objectInHand.tag == "Plate")
                 {
                     if (objectInHand.GetComponent<PlateLogic>().GetPlateStatus() == PlateStatus.Dirty)
                     {
@@ -112,11 +81,11 @@ public class PlayerLogic : MonoBehaviour
                 hit.collider.GetComponent<SinkLogic>().WashPlate();
             }
         }
-        else if (hit.collider.CompareTag("Table"))
+        else if (hit.collider.tag == "Table")
         {
-            if (Input.GetButtonDown("Pick_" + playerID))
+            if (Input.GetButtonDown("Pick"))
             {
-                if (objectInHand.CompareTag("Plate"))
+                if (objectInHand.tag == "Plate")
                 {
                     hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
                     Destroy(objectInHand);
@@ -128,6 +97,12 @@ public class PlayerLogic : MonoBehaviour
                 }
             }
         }
+    }
+    void FixedUpdate()
+    {
+        movement.x = horizontalInput * MOVEMENT_SPEED * Time.deltaTime;
+        movement.z = verticalInput * MOVEMENT_SPEED * Time.deltaTime;
+        characterController.Move(movement);
     }
     public Transform GetSpawnPoint()
     {

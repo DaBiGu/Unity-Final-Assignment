@@ -15,6 +15,11 @@ public class TableLogic : MonoBehaviour
         spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     public void PlaceObject(GameObject target)
     {
         objectOnTable = target;
@@ -28,15 +33,7 @@ public class TableLogic : MonoBehaviour
         {
             Instantiate(objectOnTable, spawnPoint.position, spawnPoint.rotation);
         }
-        Destroy(objectOnTable);
         objectOnTable = null;
         return target;
-    }
-
-    public GameObject GetCooker()
-    {
-        if (objectOnTable.CompareTag("Cooker")) 
-            return objectOnTable;
-        return null;
     }
 }
