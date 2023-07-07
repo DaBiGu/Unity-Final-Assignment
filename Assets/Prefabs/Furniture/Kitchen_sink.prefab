@@ -960,11 +960,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4434336755093248296, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
       propertyPath: m_Name
-      value: Kitchen_sink Variant
+      value: Kitchen_sink
       objectReference: {fileID: 0}
     - target: {fileID: 7221256846966201022, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7221256846966201022, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
       propertyPath: m_LocalScale.x
@@ -1052,8 +1052,33 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7656722449771355823, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4785204888953048086}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4434336755093248296, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4024398485806522654}
   m_SourcePrefab: {fileID: 100100000, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
+--- !u!1 &2373446645891779744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4434336755093248296, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
+  m_PrefabInstance: {fileID: 2123940831482238344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4024398485806522654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373446645891779744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4910412621629a1409ffc3d7a6bfef63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emptySinkPrefab: {fileID: 0}
+  fullSinkPrefab: {fileID: 0}
+  plateSpawnPoint: {fileID: 0}
+  platePrefab: {fileID: 0}
+  progressBar: {fileID: 0}
 --- !u!4 &8591711877956045607 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7656722449771355823, guid: 64d163287410bf545b7dccfc2c945333, type: 3}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TableLogic : MonoBehaviour
+public class StoveLogic : MonoBehaviour
 {
     GameObject objectOnTable;
     GameObject player;
@@ -15,28 +15,29 @@ public class TableLogic : MonoBehaviour
         spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
     }
 
-    public void PlaceObject(GameObject target)
+    public void PlaceObject(GameObject cooker)
     {
-        objectOnTable = target;
-        Vector3 targetPos = transform.position + new Vector3(0, 0.5f, 0);
-        Instantiate(target, targetPos, transform.rotation);
+        if (cooker.CompareTag("Cooker"))
+        {
+            objectOnTable = cooker;
+            Vector3 targetPos = transform.position + new Vector3(0, 0.5f, 0);
+            Instantiate(cooker, targetPos, transform.rotation);
+        }
     }
     public GameObject TakeObject()
     {
-        GameObject target = objectOnTable;
+        GameObject cooker = objectOnTable;
         if (objectOnTable != null)
         {
             Instantiate(objectOnTable, spawnPoint.position, spawnPoint.rotation);
         }
         Destroy(objectOnTable);
         objectOnTable = null;
-        return target;
+        return cooker;
     }
 
     public GameObject GetCooker()
     {
-        if (objectOnTable.CompareTag("Cooker")) 
-            return objectOnTable;
-        return null;
+        return objectOnTable;
     }
 }
