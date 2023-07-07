@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cabinet3 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7077317994978523077, guid: a60af9d4af1e8344cb4b32732cd542ad, type: 3}
+      propertyPath: m_TagString
+      value: Table
+      objectReference: {fileID: 0}
     - target: {fileID: 7601090547001650559, guid: a60af9d4af1e8344cb4b32732cd542ad, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -93,3 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765fe3266c337104aafbf54fcb950ff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPlate: 0
+  platePrefab: {fileID: 0}

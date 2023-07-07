@@ -960,7 +960,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4434336755093248296, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
       propertyPath: m_Name
-      value: Kitchen_sink
+      value: Old_Sink
+      objectReference: {fileID: 0}
+    - target: {fileID: 4434336755093248296, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
+      propertyPath: m_TagString
+      value: Sink
       objectReference: {fileID: 0}
     - target: {fileID: 7221256846966201022, guid: 64d163287410bf545b7dccfc2c945333, type: 3}
       propertyPath: m_RootOrder

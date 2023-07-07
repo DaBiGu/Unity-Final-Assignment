@@ -34,6 +34,7 @@ public class TableLogic : MonoBehaviour
         {
             objectOnTable = Instantiate(target, targetPos, transform.rotation);
         }
+        objectOnTable.transform.localScale = new Vector3(3, 3, 3);
     }
     public GameObject TakeObject()
     {
