@@ -18,6 +18,7 @@ public class PlayerLogic : MonoBehaviour
     RaycastHit hit;
     float horizontalInput;
     float verticalInput;
+    float animatorInput;
     const float MOVEMENT_SPEED = 10.0f;
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class PlayerLogic : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         objectInHand = null;
-        raycastOffset = new Vector3(0f, -2f, 0f);
+        raycastOffset = new Vector3(0f, 0f, 0f);
     }
 
     // Update is called once per frame
@@ -40,6 +41,8 @@ public class PlayerLogic : MonoBehaviour
 
         movement.x = horizontalInput * MOVEMENT_SPEED * Time.deltaTime;
         movement.z = verticalInput * MOVEMENT_SPEED * Time.deltaTime;
+        animatorInput = Mathf.Max(Mathf.Abs(horizontalInput), Mathf.Abs(verticalInput));
+        animator.SetFloat("Input", animatorInput);
         characterController.Move(movement);
         rotation.x = Input.GetAxisRaw("Horizontal_" + playerID);
         rotation.z = Input.GetAxisRaw("Vertical_" + playerID);

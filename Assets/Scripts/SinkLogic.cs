@@ -28,9 +28,12 @@ public class SinkLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (progressBar.GetComponent<ProgressBarLogic>().GetProgressComplete())
+        if (progressBar != null)
         {
-            SpawnPlate();
+            if (progressBar.GetComponent<ProgressBarLogic>().GetProgressComplete())
+            {
+                SpawnPlate();
+            }
         }
     }
     public void AddPlate()

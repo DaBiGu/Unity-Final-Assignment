@@ -25,7 +25,7 @@ public class OutlineController : MonoBehaviour
             outline.enabled = false;
         }
         RaycastHit hit;
-        Vector3 rayCastOffset = new Vector3(0, -0.8f, 0);
+        Vector3 rayCastOffset = new Vector3(0, 0, 0);
         Physics.Raycast(player.transform.position, player.transform.forward + rayCastOffset, out hit, 2.0f);
         if (hit.collider != null)
         {
