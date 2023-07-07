@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//#TODO 告诉锅你的盘子更新了
 public enum PlateStatus
 {
     Dirty,
@@ -20,6 +21,7 @@ public enum PlateStatus
 }
 public class PlateLogic : MonoBehaviour
 {
+    [SerializeField]
     PlateStatus plateStatus;
     [SerializeField]
     GameObject cleanPlatePrefab;

@@ -18,14 +18,14 @@ public class PlayerLogic : MonoBehaviour
     RaycastHit hit;
     float horizontalInput;
     float verticalInput;
-    const float MOVEMENT_SPEED = 5.0f;
+    const float MOVEMENT_SPEED = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         objectInHand = null;
-        raycastOffset = new Vector3(0f, -1f, 0f);
+        raycastOffset = new Vector3(0f, -2f, 0f);
     }
 
     // Update is called once per frame

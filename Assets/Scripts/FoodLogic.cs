@@ -24,14 +24,9 @@ public class FoodLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        foodStatus = FoodStatus.Raw;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void SetFoodStatus(FoodStatus status)
     {
         foodStatus = status;
