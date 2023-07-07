@@ -1,0 +1,11 @@
+Model Information:
+* title:	just rice 3
+* source:	https://sketchfab.com/3d-models/just-rice-3-70da0ea120ce430baaa5e8c99fb77171
+* author:	jkcalvin (https://sketchfab.com/jkcalvin)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "just rice 3" (https://sketchfab.com/3d-models/just-rice-3-70da0ea120ce430baaa5e8c99fb77171) by jkcalvin (https://sketchfab.com/jkcalvin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

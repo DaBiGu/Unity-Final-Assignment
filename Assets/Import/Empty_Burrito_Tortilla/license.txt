@@ -1,0 +1,11 @@
+Model Information:
+* title:	Empty Burrito Tortilla
+* source:	https://sketchfab.com/3d-models/empty-burrito-tortilla-916bcc6e98d647b5823856a2217db1b9
+* author:	TiimB (https://sketchfab.com/TiimB)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Empty Burrito Tortilla" (https://sketchfab.com/3d-models/empty-burrito-tortilla-916bcc6e98d647b5823856a2217db1b9) by TiimB (https://sketchfab.com/TiimB) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

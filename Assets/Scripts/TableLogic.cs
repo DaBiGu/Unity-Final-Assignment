@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//#TODO °¸°å 
 public class TableLogic : MonoBehaviour
 {
     GameObject objectOnTable;
@@ -27,6 +27,7 @@ public class TableLogic : MonoBehaviour
         if (objectOnTable != null)
         {
             Instantiate(objectOnTable, spawnPoint.position, spawnPoint.rotation);
+            Debug.Log("Food taken.");
         }
         Destroy(objectOnTable);
         objectOnTable = null;

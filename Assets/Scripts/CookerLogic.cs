@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//#TODO 区分煎锅和煮锅，加个SerializeField？
 public class CookerLogic : MonoBehaviour
 {
     Vector3 position;

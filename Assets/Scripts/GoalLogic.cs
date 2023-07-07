@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//#TODO 没看过不知道对不对
 public class GoalLogic : MonoBehaviour
 {
     [SerializeField]
