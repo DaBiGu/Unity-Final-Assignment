@@ -759,6 +759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7107772162074257658}
+  - component: {fileID: 5903941139137350268}
   m_Layer: 0
   m_Name: Taco
   m_TagString: Food
@@ -782,6 +783,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5903941139137350268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467259367520034025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451658a1f806e73448cd13ede88e9a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foodType: 3
+  foodStatus: 2
 --- !u!1 &8598644444993054036
 GameObject:
   m_ObjectHideFlags: 0

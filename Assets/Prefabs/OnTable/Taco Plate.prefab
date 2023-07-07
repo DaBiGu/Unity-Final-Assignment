@@ -90,6 +90,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Taco Plate
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
+      propertyPath: m_TagString
+      value: Plate
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -192,4 +196,4 @@ MonoBehaviour:
   withRiceMushroomPrefab: {fileID: 8109070545985682374, guid: 2812b609c5f1d7d4285b125809aef0a0, type: 3}
   withTacoRiceMeatPrefab: {fileID: 8109070545985682374, guid: 51a73e59fc03a4f4eaa13802b730f9de, type: 3}
   withTacoRiceMushroomPrefab: {fileID: 8109070545985682374, guid: 7fe9d30692b62bf458f6fadf93111d1f, type: 3}
-  position: {x: 0, y: 0, z: 0}
+  spawnPoint: {fileID: 0}

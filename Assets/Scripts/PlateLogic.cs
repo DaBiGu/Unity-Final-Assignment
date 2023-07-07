@@ -65,15 +65,16 @@ public class PlateLogic : MonoBehaviour
         rotation = transform.rotation;
 
     }
-    public void GetFood(GameObject food)
+    public GameObject GetFood(GameObject food)
     {
         bool isHeld = (gameObject.transform.parent == spawnPoint);
+        GameObject target = null;
         switch (plateStatus)
         {
             case PlateStatus.Empty:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Taco)
                 {
-                    GameObject target = Instantiate(withTacoPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -82,7 +83,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)
                 {
-                    GameObject target = Instantiate(withRicePrefab, transform.position, transform.rotation);\
+                    target = Instantiate(withRicePrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -91,7 +92,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Meat)
                 {
-                    GameObject target = Instantiate(withMeatPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withMeatPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -100,7 +101,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Mushroom)
                 {
-                    GameObject target = Instantiate(withMushroomPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withMushroomPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -111,7 +112,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withMeat:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)
                 {
-                    GameObject target = Instantiate(withRiceMeatPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withRiceMeatPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -120,7 +121,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Taco)
                 { 
-                    GameObject target = Instantiate(withTacoMeatPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoMeatPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -131,7 +132,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withMushroom:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)
                 {
-                    GameObject target = Instantiate(withRiceMushroomPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withRiceMushroomPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -140,7 +141,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Taco)
                 {
-                    GameObject target = Instantiate(withTacoMushroomPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoMushroomPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -151,7 +152,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withRice:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Taco)
                 {
-                    GameObject target = Instantiate(withTacoRicePrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoRicePrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -160,7 +161,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Meat)
                 {
-                    GameObject target = Instantiate(withTacoMeatPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoMeatPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -169,7 +170,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Mushroom)
                 {
-                    GameObject target = Instantiate(withTacoMushroomPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoMushroomPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -180,7 +181,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withTaco:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)
                 {
-                    GameObject target = Instantiate(withTacoRicePrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoRicePrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -189,7 +190,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Meat)
                 {
-                    GameObject target = Instantiate(withTacoMeatPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoMeatPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -198,7 +199,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Mushroom)
                 {
-                    GameObject target = Instantiate(withTacoMushroomPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoMushroomPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -209,7 +210,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withTaco_Meat:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)
                 {
-                    GameObject target = Instantiate(withTacoRiceMeatPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoRiceMeatPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -220,7 +221,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withTaco_Mushroom:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)
                 {
-                    GameObject target = Instantiate(withTacoRiceMushroomPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoRiceMushroomPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -231,7 +232,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withTaco_Rice:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Meat)
                 {
-                    GameObject target = Instantiate(withTacoRiceMeatPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoRiceMeatPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -240,7 +241,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Mushroom)
                 {
-                    GameObject target = Instantiate(withTacoRiceMushroomPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoRiceMushroomPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -251,7 +252,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withRice_Meat:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Taco)
                 {
-                    GameObject target = Instantiate(withTacoRiceMeatPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoRiceMeatPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -262,7 +263,7 @@ public class PlateLogic : MonoBehaviour
             case PlateStatus.withRice_Mushroom:
                 if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Taco)
                 {
-                    GameObject target = Instantiate(withTacoRiceMushroomPrefab, transform.position, transform.rotation);
+                    target = Instantiate(withTacoRiceMushroomPrefab, transform.position, transform.rotation);
                     Destroy(gameObject);
                     if (isHeld)
                     {
@@ -271,6 +272,7 @@ public class PlateLogic : MonoBehaviour
                 }
                 break;
         }
+        return target;
     }
     public PlateStatus GetPlateStatus()
     {
