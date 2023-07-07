@@ -8,6 +8,7 @@ TagManager:
   - Cooker
   - Plate
   - Food
+  - Goal
   layers:
   - Default
   - TransparentFX

@@ -83,6 +83,7 @@
     <Compile Include="Assets\Scripts\CookerLogic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
     <Compile Include="Assets\EasyTransitions\Scripts\CutoutMaskUI.cs" />
+    <Compile Include="Assets\Scripts\LevelController.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\Resizer.cs" />
     <Compile Include="Assets\EasyTransitions\Demo\DemoLoadScene.cs" />
     <Compile Include="Assets\EasyTransitions\Scripts\TransitionManager.cs" />
