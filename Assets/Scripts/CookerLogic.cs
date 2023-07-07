@@ -28,7 +28,7 @@ public class CookerLogic : MonoBehaviour
     }
     public void DropFood(GameObject food)
     {
-        if (food.tag == "Food")
+        if (food.CompareTag("Food"))
         {
             if (food.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted)
             {

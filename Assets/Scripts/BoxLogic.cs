@@ -14,7 +14,16 @@ public class BoxLogic : MonoBehaviour
     public void OpenBox()
     {
         Transform spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
-        Instantiate(foodPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject food = Instantiate(foodPrefab, spawnPoint.position, spawnPoint.rotation);
+        if (food != null)
+        {
+            Debug.Log("Food: Instantiated.");
+        }
+        else
+        {
+            Debug.Log("Instantiation Failed.");
+        }
+        food.transform.SetParent(spawnPoint);
     }
     public GameObject GetFoodType()
     {
