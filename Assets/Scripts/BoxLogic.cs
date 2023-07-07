@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class BoxLogic : MonoBehaviour
 {
-    [SerializeField]
-    Transform spawnPoint;
+    GameObject player; 
     [SerializeField]
     GameObject foodPrefab;
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player");
+    }
     public void OpenBox()
     {
-        Instantiate(foodPrefab, spawnPoint.position, Quaternion.identity);
+        Transform spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+        Instantiate(foodPrefab, spawnPoint.position, spawnPoint.rotation);
     }
     public GameObject GetFoodType()
     {

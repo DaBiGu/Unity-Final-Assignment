@@ -68,6 +68,7 @@
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabUI.cs" />
     <Compile Include="Assets\Scripts\PlayerLogic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\SketchfabImporter.cs" />
+    <Compile Include="Assets\Scripts\TableLogic.cs" />
     <Compile Include="Assets\Scripts\MainMenuLogic.cs" />
     <Compile Include="Assets\Scripts\BoxLogic.cs" />
     <Compile Include="Assets\Scripts\PlateLogic.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
     <Compile Include="Assets\Scripts\GoalLogic.cs" />
     <Compile Include="Assets\Scripts\CookerLogic.cs" />
+    <Compile Include="Assets\Scripts\SinkLogic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserWindow.cs" />
     <Compile Include="Assets\EasyTransitions\Scripts\CutoutMaskUI.cs" />
     <Compile Include="Assets\Scripts\LevelController.cs" />

@@ -17,7 +17,7 @@ public class GoalLogic : MonoBehaviour
     {
         
     }
-    void DeliverOrder(PlateStatus order)
+    public void DeliverOrder(PlateStatus order)
     {
         levelController.GetComponent<LevelController>().DeliverOrder(order);
     }

@@ -188,4 +188,8 @@ public class PlateLogic : MonoBehaviour
                 break;
         }
     }
+    public PlateStatus GetPlateStatus()
+    {
+        return plateStatus;
+    }
 }

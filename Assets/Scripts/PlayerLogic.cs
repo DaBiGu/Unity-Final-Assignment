@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerLogic : MonoBehaviour
 {
+    [SerializeField]
+    Transform spawnPoint;
     CharacterController characterController;
     Animator animator;
     GameObject objectInHand;
@@ -50,11 +52,56 @@ public class PlayerLogic : MonoBehaviour
                 }
             }
         }
+        else if (hit.collider.tag == "Goal")
+        {
+            if (Input.GetButtonDown("Pick"))
+            {
+                if (objectInHand.tag == "Plate")
+                {
+                    hit.collider.GetComponent<GoalLogic>().DeliverOrder(
+                        objectInHand.GetComponent<PlateLogic>().GetPlateStatus());
+                }
+            }
+        }
+        else if (hit.collider.tag == "Sink")
+        {
+            if (Input.GetButtonDown("Pick"))
+            {
+                if (objectInHand.tag == "Plate")
+                {
+                    if (objectInHand.GetComponent<PlateLogic>().GetPlateStatus() == PlateStatus.Dirty)
+                    {
+                        hit.collider.GetComponent<SinkLogic>().AddPlate();
+                        Destroy(objectInHand);
+                    }
+                }
+            }
+        }
+        else if (hit.collider.tag == "Table")
+        {
+            if (Input.GetButtonDown("Pick"))
+            {
+                if (objectInHand.tag == "Plate")
+                {
+                    hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
+                    Destroy(objectInHand);
+                }
+                else if (objectInHand == null)
+                {
+                    GameObject target = hit.collider.GetComponent<TableLogic>().TakeObject();
+                    objectInHand = target;
+                }
+            }
+        }
     }
     void FixedUpdate()
     {
         movement.x = horizontalInput * MOVEMENT_SPEED * Time.deltaTime;
         movement.z = verticalInput * MOVEMENT_SPEED * Time.deltaTime;
         characterController.Move(movement);
+    }
+    public Transform GetSpawnPoint()
+    {
+        return spawnPoint;
     }
 }

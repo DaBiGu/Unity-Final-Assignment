@@ -9,6 +9,8 @@ TagManager:
   - Plate
   - Food
   - Goal
+  - Sink
+  - Table
   layers:
   - Default
   - TransparentFX
