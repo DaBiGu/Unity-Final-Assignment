@@ -12,8 +12,8 @@ public class UIFixedIcon : MonoBehaviour
     //GameObject objFollowed;// 3D Objects to be followed
     [SerializeField]
     RectTransform rectTrans;// UI elements following the object
-    public Vector2 offset = new(-1, 1);
-    public Vector2 spacing = new(0.5f, 0f);
+    public Vector2 offset = new(-1.0f, 1.0f);
+    public Vector2 spacing = new(5f, 0f);
 
     public List<GameObject> m_iconPrefab;
 
@@ -21,14 +21,15 @@ public class UIFixedIcon : MonoBehaviour
 
     public List<GameObject> m_displayIcons;
 
-    // Start is called before the first fr1ame update
+    // Start is called before the first frame update
     void Start()
     {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         m_canvas = FindObjectOfType<Canvas>();
         for (int i = 0; i < m_iconPrefab.Count; i++)
         {
-            var position = screenPos + offset + spacing * i;
+            float specSpacingCount = i - (m_iconPrefab.Count - 1) / 2;
+            var position = screenPos + offset + spacing * specSpacingCount;
             var icon = Instantiate(m_iconPrefab[i], m_canvas.transform);
             icon.transform.position = position;
             m_displayIcons.Add(icon);
@@ -40,9 +41,10 @@ public class UIFixedIcon : MonoBehaviour
     void Update()
     {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        for (int i = 0; i < m_iconPrefab.Count; i++)
+        for (int i = 0; i < m_displayIcons.Count; i++)
         {
-            var position = screenPos + offset + spacing * i;
+            float specSpacingCount = i - (m_displayIcons.Count - 1) / 2;
+            var position = screenPos + offset + spacing * specSpacingCount;
             m_displayIcons[i].transform.position = position;
         }
     }
@@ -51,7 +53,7 @@ public class UIFixedIcon : MonoBehaviour
     {
         foreach (var icon in m_displayIcons)
         {
-            Destroy(icon.gameObject);
+            Destroy(icon);
         }
     }
 
