@@ -9,3 +9,5 @@ UserSettings
 ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json
 UserSettings/Layouts/default-2022.dwlt
 Assembly-CSharp.csproj
+*.csproj
+test*
