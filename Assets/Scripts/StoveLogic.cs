@@ -5,14 +5,14 @@ using UnityEngine;
 public class StoveLogic : MonoBehaviour
 {
     GameObject objectOnTable;
-    GameObject player;
+    GameObject[] players;
     Transform spawnPoint;
     // Start is called before the first frame update
     void Start()
     {
         objectOnTable = null;
-        player = GameObject.FindWithTag("Player");
-        spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+        players = GameObject.FindGameObjectsWithTag("Player");
+        // spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
     }
 
     public void PlaceObject(GameObject cooker)
@@ -24,17 +24,17 @@ public class StoveLogic : MonoBehaviour
             Instantiate(cooker, targetPos, transform.rotation);
         }
     }
-    public GameObject TakeObject()
-    {
-        GameObject cooker = objectOnTable;
-        if (objectOnTable != null)
-        {
-            Instantiate(objectOnTable, spawnPoint.position, spawnPoint.rotation);
-        }
-        Destroy(objectOnTable);
-        objectOnTable = null;
-        return cooker;
-    }
+    // public GameObject TakeObject()
+    //{
+        //GameObject cooker = objectOnTable;
+        //if (objectOnTable != null)
+        //{
+            //Instantiate(objectOnTable, spawnPoint.position, spawnPoint.rotation);
+        //}
+        //Destroy(objectOnTable);
+        //objectOnTable = null;
+        //return cooker;
+    //}
 
     public GameObject GetCooker()
     {

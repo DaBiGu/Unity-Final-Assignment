@@ -198,7 +198,7 @@ MonoBehaviour:
   withRiceMeatPrefab: {fileID: 8109070545985682374, guid: 4912de7506d7f464496273f8a717e690, type: 3}
   withRiceMushroomPrefab: {fileID: 8109070545985682374, guid: 2812b609c5f1d7d4285b125809aef0a0, type: 3}
   withTacoRiceMeatPrefab: {fileID: 8109070545985682374, guid: 51a73e59fc03a4f4eaa13802b730f9de, type: 3}
-  withTacoRiceMushroomPrefab: {fileID: 8109070545985682374, guid: 7fe9d30692b62bf458f6fadf93111d1f, type: 3}
+  withTacoRiceMushroomPrefab: {fileID: 8109070545985682374, guid: 5fe2d1f53f226da4aa33d814c73f6102, type: 3}
 --- !u!114 &-5157784707358140186
 MonoBehaviour:
   m_ObjectHideFlags: 0

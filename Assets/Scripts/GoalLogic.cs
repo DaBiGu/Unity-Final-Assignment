@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//#TODO 没看过不知道对不对
 public class GoalLogic : MonoBehaviour
 {
     [SerializeField]
     LevelController levelController;
+    [SerializeField]
+    PlateStackerLogic plateStackerLogic;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +18,13 @@ public class GoalLogic : MonoBehaviour
     {
         
     }
-    public void DeliverOrder(PlateStatus order)
+    public bool DeliverOrder(PlateStatus order)
     {
-        levelController.GetComponent<LevelController>().DeliverOrder(order);
+        bool status = levelController.GetComponent<LevelController>().DeliverOrder(order);
+        if (status)
+        {
+            plateStackerLogic.StackPlate();
+        }
+        return status;
     }
 }

@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
       propertyPath: m_Name
-      value: Plate
+      value: Dirty Plate
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
       propertyPath: m_TagString
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6562b2ac75b6ce4ba43fd5e9f127968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plateStatus: 1
+  plateStatus: 0
   cleanPlatePrefab: {fileID: 8109070545985682374}
   withTacoPrefab: {fileID: 8109070545985682374, guid: 5d409cee1ffcaa548885702e681806ee, type: 3}
   withRicePrefab: {fileID: 8109070545985682374, guid: ac86d126e6334bd4b8a3b784f9592cc0, type: 3}

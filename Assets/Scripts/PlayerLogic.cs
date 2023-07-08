@@ -67,7 +67,7 @@ public class PlayerLogic : MonoBehaviour
             if (Input.GetButtonDown("Pick_" + playerID) && objectInHand == null)
             {
                 Debug.Log("Tried to Pick from: " + hit.collider.name);
-                objectInHand = hit.collider.GetComponent<BoxLogic>().OpenBox();
+                objectInHand = hit.collider.GetComponent<BoxLogic>().OpenBox(playerID);
 
                 // objectInHand = hit.collider.GetComponent<BoxLogic>().GetFoodType();
             }
@@ -88,7 +88,7 @@ public class PlayerLogic : MonoBehaviour
                 else if (objectInHand.CompareTag("Plate"))
                 {
                     objectInHand = objectInHand.GetComponent<PlateLogic>().GetFood(
-                        cooker.GetComponent<CookerLogic>().TakeFood());
+                        cooker.GetComponent<CookerLogic>().TakeFood(), playerID);
                 }
             }
         }
@@ -98,8 +98,13 @@ public class PlayerLogic : MonoBehaviour
             {
                 if (objectInHand.CompareTag("Plate"))
                 {
-                    hit.collider.GetComponent<GoalLogic>().DeliverOrder(
-                        objectInHand.GetComponent<PlateLogic>().GetPlateStatus());
+                    bool status = hit.collider.GetComponent<GoalLogic>().DeliverOrder(
+                                    objectInHand.GetComponent<PlateLogic>().GetPlateStatus());
+                    if (status)
+                    {
+                        Destroy(objectInHand);
+                        objectInHand = null;
+                    }
                 }
             }
         }
@@ -116,9 +121,9 @@ public class PlayerLogic : MonoBehaviour
                     }
                 }
             }
-            else if (Input.GetButtonDown("Action_" + playerID))
+            else if (Input.GetButtonDown("Use_" + playerID))
             {
-                hit.collider.GetComponent<SinkLogic>().WashPlate();
+                hit.collider.GetComponent<SinkLogic>().SpawnPlate();
             }
         }
         else if (hit.collider.CompareTag("Table"))
@@ -127,13 +132,13 @@ public class PlayerLogic : MonoBehaviour
             {
                 if (objectInHand == null)
                 {
-                    GameObject target = hit.collider.GetComponent<TableLogic>().TakeObject();
+                    GameObject target = hit.collider.GetComponent<TableLogic>().TakeObject(playerID);
                     objectInHand = target;
                     // Instantiate(target, spawnPoint.position, spawnPoint.rotation);
                 }
                 else if (objectInHand.CompareTag("Plate") || objectInHand.CompareTag("Food"))
                 {
-                    bool result = hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
+                    bool result = hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand, playerID);
                     if (result)
                     {
                         Destroy(objectInHand);
@@ -168,7 +173,7 @@ public class PlayerLogic : MonoBehaviour
             {
                 if (objectInHand == null)
                 {
-                    objectInHand = hit.collider.GetComponent<ChoppingBoardLogic>().TakeObject();
+                    objectInHand = hit.collider.GetComponent<ChoppingBoardLogic>().TakeObject(playerID);
                 }
                 else if (objectInHand.CompareTag("Food"))
                 {
@@ -185,9 +190,23 @@ public class PlayerLogic : MonoBehaviour
                 hit.collider.GetComponent<ChoppingBoardLogic>().CutFood();
             }
         }
+        else if (hit.collider.CompareTag("Plate Stacker"))
+        {
+            if (Input.GetButtonDown("Pick_" + playerID))
+            {
+                if (objectInHand == null)
+                {
+                    objectInHand = hit.collider.GetComponent<PlateStackerLogic>().RemovePlate(playerID);
+                }
+            }
+        }
     }
     public Transform GetSpawnPoint()
     {
         return spawnPoint;
     }
+    public int GetPlayerID()
+    {
+        return playerID;
+    }   
 }

@@ -49,7 +49,7 @@ public class PlateLogic : MonoBehaviour
     GameObject withTacoRiceMushroomPrefab;
     // [SerializeField]
     Transform spawnPoint;
-    GameObject player;
+    GameObject[] players;
     Vector3 position;
     Quaternion rotation;
     // Start is called before the first frame update
@@ -57,8 +57,8 @@ public class PlateLogic : MonoBehaviour
     {
         position = transform.position;
         rotation = transform.rotation;
-        player = GameObject.FindWithTag("Player");
-        spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+        players = GameObject.FindGameObjectsWithTag("Player");
+        // spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
     }
 
     // Update is called once per frame
@@ -68,8 +68,16 @@ public class PlateLogic : MonoBehaviour
         rotation = transform.rotation;
 
     }
-    public GameObject GetFood(GameObject food)
+    public GameObject GetFood(GameObject food, int playerID)
     {
+        Transform spawnPoint = null;
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<PlayerLogic>().GetPlayerID() == playerID)
+            {
+                spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+            }
+        }
         bool isHeld = (gameObject.transform.parent == spawnPoint);
         if (food.GetComponent<FoodLogic>().GetFoodStatus() != FoodStatus.Cooked) return null;
         GameObject target = null;

@@ -163,6 +163,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
       insertIndex: -1
       addedObject: {fileID: -5269369076471621931}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6253287812793204888}
   m_SourcePrefab: {fileID: 100100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
 --- !u!4 &8109070545985251302 stripped
 Transform:
@@ -214,6 +217,25 @@ MonoBehaviour:
   canvasPrefab: {fileID: 4321581362360443184, guid: e2c41c6e60dd62c4cb1a4291cdc20c2d, type: 3}
   offset: {x: -1, y: 1}
   spacing: {x: 5, y: 0}
+  m_iconPrefab:
+  - {fileID: 935492408370415744, guid: 653734b819a22a54ea05d975afcdf753, type: 3}
+  - {fileID: 6635889189986761984, guid: 389facba2d8c755469ed1283eaa73aff, type: 3}
+  m_displayIcons: []
+--- !u!114 &-6253287812793204888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109070545985682374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cf402d114e1a2469e6fdd632228b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 4321581362360443184, guid: e2c41c6e60dd62c4cb1a4291cdc20c2d, type: 3}
+  offset: {x: -25, y: 50}
+  spacing: {x: 50, y: 0}
   m_iconPrefab:
   - {fileID: 935492408370415744, guid: 653734b819a22a54ea05d975afcdf753, type: 3}
   - {fileID: 6635889189986761984, guid: 389facba2d8c755469ed1283eaa73aff, type: 3}

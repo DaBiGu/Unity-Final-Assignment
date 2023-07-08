@@ -5,7 +5,7 @@ using UnityEngine;
 public class TableLogic : MonoBehaviour
 {
     GameObject objectOnTable;
-    GameObject player;
+    GameObject[] players;
     Transform spawnPoint;
     [SerializeField]
     bool spawnPlate = false;
@@ -15,24 +15,24 @@ public class TableLogic : MonoBehaviour
     void Start()
     {
         objectOnTable = null;
-        player = GameObject.FindWithTag("Player");
-        spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+        players = GameObject.FindGameObjectsWithTag("Player");
+        // spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
         if (spawnPlate)
         {
-            PlaceObject(platePrefab);
+            PlaceObject(platePrefab, 0);
         }
     }
 
-    public bool PlaceObject(GameObject target)
+    public bool PlaceObject(GameObject target, int playerID)
     {
         bool status = false;
         Vector3 targetPos = transform.position + new Vector3(0, transform.lossyScale.y, 0);
         if (objectOnTable != null && objectOnTable.CompareTag("Plate") && target.CompareTag("Food"))
         {
             if (target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted ||
-                target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cooked)
+                    target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cooked)
             {
-                objectOnTable = objectOnTable.GetComponent<PlateLogic>().GetFood(target);
+                objectOnTable = objectOnTable.GetComponent<PlateLogic>().GetFood(target, playerID);
                 status = true;
             }
         }
@@ -52,8 +52,16 @@ public class TableLogic : MonoBehaviour
         }
         return status;
     }
-    public GameObject TakeObject()
+    public GameObject TakeObject(int playerID)
     {
+        Transform spawnPoint = null;
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<PlayerLogic>().GetPlayerID() == playerID)
+            {
+                spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+            }
+        }
         GameObject target = null;
         if (objectOnTable != null)
         {

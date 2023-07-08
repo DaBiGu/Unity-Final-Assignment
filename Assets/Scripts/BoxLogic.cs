@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class BoxLogic : MonoBehaviour
 {
-    GameObject player; 
+    GameObject[] players; 
     [SerializeField]
     GameObject foodPrefab;
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
+        players = GameObject.FindGameObjectsWithTag("Player");
     }
-    public GameObject OpenBox()
+    public GameObject OpenBox(int playerID)
     {
-        Transform spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+        Transform spawnPoint = null;
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<PlayerLogic>().GetPlayerID() == playerID)
+            {
+                spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+            }
+        }
         GameObject food = Instantiate(foodPrefab, spawnPoint.position, spawnPoint.rotation);
         if (food != null)
         {
