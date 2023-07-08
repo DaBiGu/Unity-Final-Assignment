@@ -130,9 +130,12 @@ public class PlayerLogic : MonoBehaviour
                 }
                 else if (objectInHand.CompareTag("Plate") || objectInHand.CompareTag("Food"))
                 {
-                    hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
-                    Destroy(objectInHand);
-                    objectInHand = null;
+                    bool result = hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
+                    if (result)
+                    {
+                        Destroy(objectInHand);
+                        objectInHand = null;
+                    }
                 }
             }
         }
