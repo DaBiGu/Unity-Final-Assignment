@@ -5,7 +5,7 @@ using UnityEngine;
 public class OutlineController : MonoBehaviour
 {
     Outline[] outlineObjects;
-    GameObject player;
+    GameObject[] players;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +14,7 @@ public class OutlineController : MonoBehaviour
         {
             outline.enabled = false;
         }
-        player = GameObject.FindWithTag("Player");     
+        players = GameObject.FindGameObjectsWithTag("Player");     
     }
 
     // Update is called once per frame
@@ -27,12 +27,15 @@ public class OutlineController : MonoBehaviour
         }
         RaycastHit hit;
         Vector3 rayCastOffset = new Vector3(0, 0, 0);
-        Physics.Raycast(player.transform.position, player.transform.forward + rayCastOffset, out hit, 2.0f);
-        if (hit.collider != null)
+        foreach(GameObject player in players)
         {
-            if (hit.collider.GetComponent<Outline>() != null) 
+            Physics.Raycast(player.transform.position, player.transform.forward + rayCastOffset, out hit, 2.0f);
+            if (hit.collider != null)
             {
-                hit.collider.GetComponent<Outline>().enabled = true;
+                if (hit.collider.GetComponent<Outline>() != null)
+                {
+                    hit.collider.GetComponent<Outline>().enabled = true;
+                }
             }
         }
     }
