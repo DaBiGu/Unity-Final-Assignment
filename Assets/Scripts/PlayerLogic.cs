@@ -72,8 +72,11 @@ public class PlayerLogic : MonoBehaviour
                 // objectInHand = hit.collider.GetComponent<BoxLogic>().GetFoodType();
             }
         }
-        else if (hit.collider.CompareTag("Stove"))
-        {
+        else if (hit.collider.CompareTag("Stove")) { 
+            if (objectInHand == null)
+            {
+                return;
+            }
             GameObject cooker = hit.collider.GetComponent<StoveLogic>().GetCooker();
             if (Input.GetButtonDown("Pick_" + playerID))
             {
@@ -91,6 +94,7 @@ public class PlayerLogic : MonoBehaviour
         }
         else if (hit.collider.CompareTag("Goal"))
         {
+            if (objectInHand == null) return;
             if (Input.GetButtonDown("Pick_" + playerID))
             {
                 if (objectInHand.CompareTag("Plate"))
@@ -102,6 +106,7 @@ public class PlayerLogic : MonoBehaviour
         }
         else if (hit.collider.CompareTag("Sink"))
         {
+            if (objectInHand == null) return;
             if (Input.GetButtonDown("Pick_" + playerID))
             {
                 if (objectInHand.CompareTag("Plate"))
@@ -113,7 +118,7 @@ public class PlayerLogic : MonoBehaviour
                     }
                 }
             }
-            else if (Input.GetButtonDown("Action_" + playerID))
+            else if (Input.GetButtonDown("Use_" + playerID))
             {
                 hit.collider.GetComponent<SinkLogic>().WashPlate();
             }
@@ -140,12 +145,22 @@ public class PlayerLogic : MonoBehaviour
         {
             if (Input.GetButtonDown("Pick_" + playerID))
             {
+                if (objectInHand == null)
+                {
+                    return;
+                }
                 if (objectInHand.CompareTag("Plate"))
                 {
+                    PlateStatus plateStatus = objectInHand.GetComponent<PlateLogic>().GetPlateStatus();
+                    if (plateStatus == PlateStatus.Dirty || plateStatus == PlateStatus.Empty)
+                    {
+                        return;
+                    }
                     Vector3 tempPosition = objectInHand.transform.position;
                     Quaternion tempRotation = objectInHand.transform.rotation;
                     Destroy(objectInHand);
                     GameObject target = Instantiate(emptyPlatePrefab, tempPosition, tempRotation);
+                    target.GetComponent<PlateLogic>().SetPlateStatus(plateStatus);
                     objectInHand = target;
                     target.transform.SetParent(spawnPoint);
                 }

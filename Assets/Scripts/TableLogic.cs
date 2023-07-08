@@ -25,7 +25,7 @@ public class TableLogic : MonoBehaviour
 
     public void PlaceObject(GameObject target)
     {
-        Debug.Log(target.name);
+        Debug.Log("Placed: " + target.name);
         Vector3 targetPos = transform.position + new Vector3(0, transform.lossyScale.y, 0);
         if (objectOnTable != null && objectOnTable.CompareTag("Plate") && target.CompareTag("Food"))
         {

@@ -278,6 +278,11 @@ public class PlateLogic : MonoBehaviour
         }
         return target;
     }
+
+    public void SetPlateStatus(PlateStatus status)
+    {
+        plateStatus = status;
+    }
     public PlateStatus GetPlateStatus()
     {
         return plateStatus;
