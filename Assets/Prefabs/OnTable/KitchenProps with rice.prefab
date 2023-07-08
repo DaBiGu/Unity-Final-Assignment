@@ -211,7 +211,7 @@ MonoBehaviour:
   emptyPrefab: {fileID: 433480677289632161, guid: dea6d5e34b481bc41a7635bbb23d5219, type: 3}
   progressBar: {fileID: 0}
   cookerType: 0
-  containingFood: Rice
+  containingFood: 1
   ricePrefab: {fileID: 4290249364808728797, guid: ec5bf57710dd8b449adaaa83ed748f0e, type: 3}
   meatPrefab: {fileID: 0}
   mushroomPrefab: {fileID: 0}
