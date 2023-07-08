@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - canvasPrefab: {fileID: 4321581362360443184, guid: e2c41c6e60dd62c4cb1a4291cdc20c2d, type: 3}
+  - m_barPrefab: {fileID: 6848739074368699834, guid: f1419c2a3f5ecf44e824039f908fea60, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -65,22 +65,24 @@ public class LevelController : MonoBehaviour
         for(int i = 0; i < orderCount; i++)
         {
             OrderTimers[i] -= Time.deltaTime;
-            OrderDisplayLogic.Instance.SetTimebar(i, OrderTimers[i]);
+            //OrderDisplayLogic.Instance.SetTimebar(i, OrderTimers[i]);
             if (OrderTimers[i] <= 0)
             {
                 // order is expired
-                OrderDisplayLogic.Instance.ExpiredOrderDisplay(i);
+                //OrderDisplayLogic.Instance.ExpiredOrderDisplay(i);
                 OrderTimers[i] = ORDER_TIMING;
-                AudioController.Instance.PlayWrongSound();
+                //AudioController.Instance.PlayWrongSound();
                 tipStack = 0;
                 score -= (int)(SCORE_PER_ORDER * 0.6);
             }
         }
-        m_moneyText.text = score.ToString();
-        m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+        // m_moneyText.text = score.ToString();
+        //m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+        // m_tipStackText.text = tipStack.ToString();
+
         // track level timer
         levelTimer -= Time.deltaTime;
-        m_timeText.text = string.Format("{0:D2}:{1:D2}", (int)levelTimer / 60, (int)levelTimer % 60); 
+        //m_timeText.text = string.Format("{0:D2}:{1:D2}", (int)levelTimer / 60, (int)levelTimer % 60); 
         if (levelTimer <= 30.0f)
         {
             m_timeText.color = Color.yellow;
@@ -88,7 +90,7 @@ public class LevelController : MonoBehaviour
             if (beepSpacing <= 0)
             {
                 beepSpacing = BEEP_SPACING;
-                AudioController.Instance.PlayTimerBeepSound();
+                //AudioController.Instance.PlayTimerBeepSound();
             }
         }
         if (levelTimer <= 0)
@@ -123,7 +125,7 @@ public class LevelController : MonoBehaviour
                 OrderTimers.Add(orderTime);
                 orderCount++;
             }
-            OrderDisplayLogic.Instance.AddOrderDisplay(random);
+            //OrderDisplayLogic.Instance.AddOrderDisplay(random);
         }
     }
     public void DeliverOrder(PlateStatus order)
@@ -133,7 +135,7 @@ public class LevelController : MonoBehaviour
         {
             Orders.RemoveAt(orderIndex);
             OrderTimers.RemoveAt(orderIndex);
-            OrderDisplayLogic.Instance.DeliverOrderDisplay(orderIndex);
+            //OrderDisplayLogic.Instance.DeliverOrderDisplay(orderIndex);
             orderCount--;
             if (orderIndex == 0)
             {
@@ -145,7 +147,8 @@ public class LevelController : MonoBehaviour
             }
             score += SCORE_PER_ORDER + tipStack * TIP;
             m_moneyText.text = score.ToString();
-            m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+            //m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+            m_tipStackText.text = tipStack.ToString();
         }
     }
     int GetOrderIndex(PlateStatus order)

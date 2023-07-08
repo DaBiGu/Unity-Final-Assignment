@@ -26,6 +26,11 @@ public class UIFixedBar : MonoBehaviour
     void Start()
     {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        var tmp_canvas = GetComponentInChildren<Canvas>();
+        if (tmp_canvas != null)
+        {
+            Destroy(tmp_canvas.gameObject);
+        }
         var canvas = Instantiate(canvasPrefab, transform);
         //m_canvas = canvas.GetComponent<Canvas>();
         m_displayBar = Instantiate(m_barPrefab, canvas.transform);

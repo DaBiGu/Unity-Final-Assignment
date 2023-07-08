@@ -17,7 +17,7 @@ public class UIFixedIcon : MonoBehaviour
 
     public List<GameObject> m_iconPrefab;
 
-    Canvas m_canvas;
+    GameObject canvas;
 
     public List<GameObject> m_displayIcons;
 
@@ -25,16 +25,21 @@ public class UIFixedIcon : MonoBehaviour
     void Start()
     {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        var canvas = Instantiate(canvasPrefab, transform);
-        m_canvas = canvas.GetComponent<Canvas>();
+        var tmp_canvas = GetComponentInChildren<Canvas>();
+        m_displayIcons = new();
+        if (tmp_canvas != null)
+        {
+            Destroy(tmp_canvas.gameObject);
+        }
+        canvas = Instantiate(canvasPrefab, transform);
+        //m_canvas = canvas.GetComponent<Canvas>();
         for (int i = 0; i < m_iconPrefab.Count; i++)
         {
             float specSpacingCount = i - (m_iconPrefab.Count - 1) / 2;
             var position = screenPos + offset + spacing * specSpacingCount;
-            var icon = Instantiate(m_iconPrefab[i], m_canvas.transform);
+            var icon = Instantiate(m_iconPrefab[i], canvas.transform);
             icon.transform.position = position;
             m_displayIcons.Add(icon);
-            
         }
     }
 
@@ -54,7 +59,7 @@ public class UIFixedIcon : MonoBehaviour
     {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
         m_iconPrefab.Add(iconPrefab);
-        var icon = Instantiate(iconPrefab, m_canvas.transform);
+        var icon = Instantiate(iconPrefab, canvas.transform);
         icon.transform.position = screenPos + offset + spacing * (m_displayIcons.Count + 1);
         m_displayIcons.Add(icon);
     }

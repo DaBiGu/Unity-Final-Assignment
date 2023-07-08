@@ -246,6 +246,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 912303454790536728}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 765360057274677790}
   m_SourcePrefab: {fileID: 100100000, guid: 20293085696677d40a2cc969adbb2e12, type: 3}
 --- !u!4 &8109070545985251302 stripped
 Transform:
@@ -282,4 +285,22 @@ MonoBehaviour:
   withRiceMushroomPrefab: {fileID: 8109070545985682374}
   withTacoRiceMeatPrefab: {fileID: 8109070545985682374, guid: 51a73e59fc03a4f4eaa13802b730f9de, type: 3}
   withTacoRiceMushroomPrefab: {fileID: 8109070545985682374, guid: 5fe2d1f53f226da4aa33d814c73f6102, type: 3}
-  spawnPoint: {fileID: 0}
+--- !u!114 &765360057274677790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8109070545985682374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cf402d114e1a2469e6fdd632228b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasPrefab: {fileID: 4321581362360443184, guid: e2c41c6e60dd62c4cb1a4291cdc20c2d, type: 3}
+  offset: {x: -1, y: 1}
+  spacing: {x: 5, y: 0}
+  m_iconPrefab:
+  - {fileID: 4233554608919778953, guid: edadbcb14e41d7e4b916c1456e3e41de, type: 3}
+  - {fileID: 3795612364485716448, guid: 9b4c5b7a48fb3ed4192cc3a816c1b42d, type: 3}
+  m_displayIcons: []
