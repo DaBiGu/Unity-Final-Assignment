@@ -199,7 +199,6 @@ MonoBehaviour:
   withRiceMushroomPrefab: {fileID: 8109070545985682374, guid: 2812b609c5f1d7d4285b125809aef0a0, type: 3}
   withTacoRiceMeatPrefab: {fileID: 8109070545985682374, guid: 51a73e59fc03a4f4eaa13802b730f9de, type: 3}
   withTacoRiceMushroomPrefab: {fileID: 8109070545985682374, guid: 7fe9d30692b62bf458f6fadf93111d1f, type: 3}
-  spawnPoint: {fileID: 0}
 --- !u!114 &5654591857425640218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cf402d114e1a2469e6fdd632228b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTrans: {fileID: 0}
+  canvasPrefab: {fileID: 4321581362360443184, guid: e2c41c6e60dd62c4cb1a4291cdc20c2d, type: 3}
   offset: {x: -1, y: 1}
   spacing: {x: 5, y: 0}
   m_iconPrefab:

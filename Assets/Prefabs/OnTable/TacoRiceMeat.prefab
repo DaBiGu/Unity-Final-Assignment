@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cf402d114e1a2469e6fdd632228b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTrans: {fileID: 0}
+  canvasPrefab: {fileID: 0}
   offset: {x: -1, y: 1}
   spacing: {x: 5, y: 0}
   m_iconPrefab:
