@@ -16,4 +16,8 @@
         <Key>LanguageSwitchText</Key>
         <Value>语言: 中文 (中国)</Value>
     </Entry>
+    <Entry>
+        <Key>TipText</Key>
+        <Value>小费&#x000A;×{0}</Value>
+    </Entry>
 </Localization>

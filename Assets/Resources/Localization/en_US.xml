@@ -17,35 +17,7 @@
         <Value>Language: English (US)</Value>
     </Entry>
     <Entry>
-        <Key>EnergyPrefix</Key>
-        <Value>Energy&#x000A;{0}</Value>
-    </Entry>
-    <Entry>
-        <Key>HPPrefix</Key>
-        <Value>Health&#x000A;{0}</Value>
-    </Entry>
-    <Entry>
-        <Key>ZombieCountPrefix</Key>
-        <Value>{0} Zombie(s) Remaining</Value>
-    </Entry>
-    <Entry>
-        <Key>ZombieCountZero</Key>
-        <Value>No Zombie Remaining</Value>
-    </Entry>
-    <Entry>
-        <Key>PlayerDeadMsg</Key>
-        <Value>GAME OVER&#x000A;Press JUMP to Restart</Value>
-    </Entry>
-    <Entry>
-        <Key>ExitHint</Key>
-        <Value>Esc / "Menu" Button = Back to Main Menu</Value>
-    </Entry>
-    <Entry>
-        <Key>ZombieSpawnHint</Key>
-        <Value>X = Spawn a zombie</Value>
-    </Entry>
-    <Entry>
-        <Key>Reloading</Key>
-        <Value>Reloading</Value>
+        <Key>TipText</Key>
+        <Value>TIPS&#x000A;×{0}</Value>
     </Entry>
 </Localization>

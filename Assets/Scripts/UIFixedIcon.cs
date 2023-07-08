@@ -11,7 +11,7 @@ public class UIFixedIcon : MonoBehaviour
     //[SerializeField]
     //GameObject objFollowed;// 3D Objects to be followed
     [SerializeField]
-    RectTransform rectTrans;// UI elements following the object
+    GameObject canvasPrefab;
     public Vector2 offset = new(-1.0f, 1.0f);
     public Vector2 spacing = new(5f, 0f);
 
@@ -25,7 +25,8 @@ public class UIFixedIcon : MonoBehaviour
     void Start()
     {
         Vector2 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-        m_canvas = FindObjectOfType<Canvas>();
+        var canvas = Instantiate(canvasPrefab, transform);
+        m_canvas = canvas.GetComponent<Canvas>();
         for (int i = 0; i < m_iconPrefab.Count; i++)
         {
             float specSpacingCount = i - (m_iconPrefab.Count - 1) / 2;
@@ -46,14 +47,6 @@ public class UIFixedIcon : MonoBehaviour
             float specSpacingCount = i - (m_displayIcons.Count - 1) / 2;
             var position = screenPos + offset + spacing * specSpacingCount;
             m_displayIcons[i].transform.position = position;
-        }
-    }
-
-    void OnDestroy()
-    {
-        foreach (var icon in m_displayIcons)
-        {
-            Destroy(icon);
         }
     }
 

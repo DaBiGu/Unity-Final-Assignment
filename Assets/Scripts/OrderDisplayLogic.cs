@@ -1,3 +1,4 @@
+using CodeMonkey.HealthSystemCM;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -46,6 +47,22 @@ public class OrderDisplayLogic : MonoBehaviour
         Destroy(temp, 0.8f);
     }
 
+    public void ExpiredOrderDisplay(int orderDisplayQueueIndex)
+    {
+        var temp = m_orderDisplayQueue[orderDisplayQueueIndex];
+
+        var maskContainer = temp.transform.Find("WrongMask");
+        maskContainer.GetComponent<CanvasGroupLogic>().Hide();
+    }
+
+    public void SetTimebar(int orderDisplayQueueIndex, float time)
+    {
+        var temp = m_orderDisplayQueue[orderDisplayQueueIndex];
+
+        var healthSystemComp = temp.GetComponent<HealthSystemComponent>();
+        healthSystemComp.GetHealthSystem().SetHealth(time);
+    }
+
     public void TestMeat()
     {
         AddOrderDisplay(0);
@@ -64,6 +81,16 @@ public class OrderDisplayLogic : MonoBehaviour
         DeliverOrderDisplay(1);
     }
 
+    public void ExpireFirst()
+    {
+        ExpiredOrderDisplay(0);
+    }
+
+    public void SetTimeFirst()
+    {
+        SetTimebar(0, 40);
+    }
+
     void SmoothMove(Transform targetTransform, Vector2 targetLocalPos, int velocityListIndex)
     {
         var tempVelocity = m_velocities[velocityListIndex];
@@ -77,7 +104,7 @@ public class OrderDisplayLogic : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance == null)
         {

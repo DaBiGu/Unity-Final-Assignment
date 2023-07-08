@@ -3,7 +3,14 @@ guid: 114e22eb5aef5a64797383e4bc7fe565
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - throwawaySound: {fileID: 8300000, guid: f4c9a0f802d02354f88e1b2186f858bc, type: 3}
+  - cookCompleteSound: {fileID: 8300000, guid: 08919b917e2422e478cb4d8e55177e9b, type: 3}
+  - orderCompleteSound: {fileID: 8300000, guid: 97ef585a27f55ac4fb1a804c9bb34479, type: 3}
+  - dashSound: {fileID: 8300000, guid: ab2ba40644d7e254eb31df24bfca2571, type: 3}
+  - wrongSound: {fileID: 8300000, guid: c3d1edb1ab930a24c85e77570c36d038, type: 3}
+  - timerBeepSound: {fileID: 8300000, guid: 34cc6ed73e9fadd4e998c139db2fa1d0, type: 3}
+  - timeUpSound: {fileID: 8300000, guid: d978f035c6e7650448adb8be6b7837f9, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
