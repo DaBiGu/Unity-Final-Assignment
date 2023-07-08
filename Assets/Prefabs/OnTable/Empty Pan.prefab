@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Empty Pan
       objectReference: {fileID: 0}
+    - target: {fileID: 5366650831601739498, guid: 4fb052047707ed645a77e875351e3a5c, type: 3}
+      propertyPath: m_TagString
+      value: Cooker
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -94,12 +98,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cookingPrefab: {fileID: 0}
-  emptyPrefab: {fileID: 0}
+  emptyPrefab: {fileID: 8470485092723607272}
   progressBar: {fileID: 0}
-  cookerType: 0
+  cookerType: 1
   containingFood: 0
   ricePrefab: {fileID: 0}
-  meatPrefab: {fileID: 0}
-  mushroomPrefab: {fileID: 0}
-  meatCookingPrefab: {fileID: 0}
-  mushroomCookingPrefab: {fileID: 0}
+  meatPrefab: {fileID: 5079161606275329732, guid: 5fc2ed74050cd2f419d344f0b6fdc597, type: 3}
+  mushroomPrefab: {fileID: 7658803784032561525, guid: 632eca3c16ea7a143a6559ab811209f2, type: 3}
+  meatCookingPrefab: {fileID: 8470485092723607272, guid: d685d0a712172dd49946da64d6edb642, type: 3}
+  mushroomCookingPrefab: {fileID: 8470485092723607272, guid: 764babd8591749d41a4b6b7f8d92ff1a, type: 3}

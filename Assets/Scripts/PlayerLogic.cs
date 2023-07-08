@@ -79,8 +79,11 @@ public class PlayerLogic : MonoBehaviour
             {
                 if (objectInHand.CompareTag("Food"))
                 {
-                    cooker.GetComponent<CookerLogic>().DropFood(objectInHand);
-                    Destroy(objectInHand);
+                    if (objectInHand.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted)
+                    {
+                        cooker.GetComponent<CookerLogic>().DropFood(objectInHand);
+                        Destroy(objectInHand);
+                    }
                 }
                 else if (objectInHand.CompareTag("Plate"))
                 {

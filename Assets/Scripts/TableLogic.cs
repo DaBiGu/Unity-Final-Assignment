@@ -29,7 +29,8 @@ public class TableLogic : MonoBehaviour
         Vector3 targetPos = transform.position + new Vector3(0, transform.lossyScale.y, 0);
         if (objectOnTable != null && objectOnTable.CompareTag("Plate") && target.CompareTag("Food"))
         {
-            if (target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted)
+            if (target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted ||
+                target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cooked)
             {
                 objectOnTable = objectOnTable.GetComponent<PlateLogic>().GetFood(target);
                 status = true;
