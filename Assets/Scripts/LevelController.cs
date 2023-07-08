@@ -84,6 +84,7 @@ public class LevelController : MonoBehaviour
             }
             return;
         }
+        if (m_isEndgame) return;
 
         // track each order timing
         for(int i = 0; i < orderCount; i++)
@@ -209,18 +210,28 @@ public class LevelController : MonoBehaviour
         m_timeUpSign.SetActive(true);
         var scriptList1 = FindObjectsOfType<UIFixedBar>();
         var scriptList2 = FindObjectsOfType<UIFixedIcon>();
-        foreach (var item in scriptList1)
+        if (scriptList1 != null)
         {
-            item.enabled = false;
+            foreach (var item in scriptList1)
+            {
+                item.enabled = false;
+            }
         }
-        foreach (var item in scriptList2)
+        if (scriptList2 != null)
         {
-            item.enabled = false;
+            foreach (var item in scriptList2)
+            {
+                item.enabled = false;
+            }
         }
+
         var overlayList = GameObject.FindGameObjectsWithTag("UIOverlay");
-        foreach (var item in overlayList)
+        if (overlayList != null)
         {
-            Destroy(item);
+            foreach (var item in overlayList)
+            {
+                Destroy(item);
+            }
         }
     }
 

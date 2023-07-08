@@ -39,6 +39,13 @@ namespace CodeMonkey.HealthSystemCM {
             healthSystem.OnHealthChanged += HealthSystem_OnHealthChanged;
         }
 
+        public void ChangeColor(Color color)
+        {
+            var bar = transform.Find("Bar");
+            bar.GetComponent<Image>().color = color;
+        }
+
+
         /// <summary>
         /// Event fired from the Health System when Health Amount changes, update Health Bar
         /// </summary>

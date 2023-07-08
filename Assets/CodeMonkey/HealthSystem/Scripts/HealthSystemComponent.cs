@@ -7,6 +7,11 @@ namespace CodeMonkey.HealthSystemCM {
     /// </summary>
     public class HealthSystemComponent : MonoBehaviour, IGetHealthSystem {
 
+        // modified by xuqh
+
+        [SerializeField]
+        GameObject m_onlyHealthBarUI;
+
         [Tooltip("Maximum Health amount")]
         [SerializeField] private float healthAmountMax = 100f;
 
@@ -32,6 +37,11 @@ namespace CodeMonkey.HealthSystemCM {
             return healthSystem;
         }
 
+        // modified by xuqh
+        public void ChangeColor(Color color)
+        {
+            m_onlyHealthBarUI.GetComponent<HealthBarUI>().ChangeColor(color);
+        }
 
     }
 

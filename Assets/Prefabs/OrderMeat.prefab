@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d228e0f8ad9cebe4db27fce21d958ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alpha: 0
   m_alphaSpeed: 5
 --- !u!1 &636820135393448203
 GameObject:
@@ -114,7 +115,7 @@ GameObject:
   - component: {fileID: 4878352208054430515}
   - component: {fileID: 8548345898168526144}
   - component: {fileID: 9075931305465419172}
-  - component: {fileID: 8112597444386419192}
+  - component: {fileID: 3391835799421955364}
   m_Layer: 5
   m_Name: OrderMeat
   m_TagString: Untagged
@@ -174,8 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d228e0f8ad9cebe4db27fce21d958ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_alpha: 0
   m_alphaSpeed: 5
---- !u!114 &8112597444386419192
+--- !u!114 &3391835799421955364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -187,7 +189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb9aa7183709da429076edc5294507b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthAmountMax: 90
+  m_onlyHealthBarUI: {fileID: 9165665843002117216}
+  healthAmountMax: 30
   startingHealthAmount: 0
 --- !u!1 &1333544310179008935
 GameObject:
@@ -885,9 +888,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4878352208054430515}
     m_Modifications:
+    - target: {fileID: 1658283231683653389, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658283231683653389, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1658283232174595477, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
       propertyPath: m_Name
       value: TimebarUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658283232174595477, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1658283232174595478, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
       propertyPath: m_Pivot.x
@@ -963,7 +978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1658283232174595478, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -1.9
       objectReference: {fileID: 0}
     - target: {fileID: 1658283232174595478, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -994,6 +1009,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
+--- !u!1 &9165665843002117216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1658283232174595477, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}
+  m_PrefabInstance: {fileID: 7507952847218168309}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9165665843002117219 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1658283232174595478, guid: a25d55f89d6b0ac48a3ba45b76ef0c9c, type: 3}

@@ -62,6 +62,21 @@ public class OrderDisplayLogic : MonoBehaviour
 
         var healthSystemComp = temp.GetComponent<HealthSystemComponent>();
         healthSystemComp.GetHealthSystem().SetHealth(time);
+        if (time > ((float)healthSystemComp.GetHealthSystem().GetHealthMax() * 2.0f / 3.0f))
+        {
+            //Debug.Log("Green");
+            healthSystemComp.ChangeColor(Color.green);
+        }
+        else if (time > ((float)healthSystemComp.GetHealthSystem().GetHealthMax() * 1.0f / 3.0f))
+        {
+            healthSystemComp.ChangeColor(Color.yellow);
+            //Debug.Log("Y");
+        }
+        else
+        {
+            healthSystemComp.ChangeColor(Color.red);
+            //Debug.Log("R");
+        } 
     }
 
     public void TestMeat()
