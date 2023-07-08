@@ -73,9 +73,11 @@ public class LevelController : MonoBehaviour
                 OrderTimers[i] = ORDER_TIMING;
                 AudioController.Instance.PlayWrongSound();
                 tipStack = 0;
+                score -= (int)(SCORE_PER_ORDER * 0.6);
             }
         }
-
+        m_moneyText.text = score.ToString();
+        m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
         // track level timer
         levelTimer -= Time.deltaTime;
         m_timeText.text = string.Format("{0:D2}:{1:D2}", (int)levelTimer / 60, (int)levelTimer % 60); 
