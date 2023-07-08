@@ -20,6 +20,7 @@ public class OutlineController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        outlineObjects = FindObjectsOfType<Outline>();
         foreach (Outline outline in outlineObjects)
         {
             outline.enabled = false;

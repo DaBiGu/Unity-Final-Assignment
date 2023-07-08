@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 6518114226212524418}
   - component: {fileID: -1849185548677008851}
   m_Layer: 0
-  m_Name: Cooked Rice
+  m_Name: Cutted Rice
   m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodType: 0
-  foodStatus: 2
+  foodStatus: 1
 --- !u!1 &9197428083370588659
 GameObject:
   m_ObjectHideFlags: 0

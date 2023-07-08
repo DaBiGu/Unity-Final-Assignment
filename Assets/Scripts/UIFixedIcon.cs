@@ -54,6 +54,8 @@ public class UIFixedIcon : MonoBehaviour
         foreach (var icon in m_displayIcons)
         {
             Destroy(icon);
+            m_displayIcons.Remove(icon);
+            Debug.Log(m_displayIcons[0]);
         }
     }
 

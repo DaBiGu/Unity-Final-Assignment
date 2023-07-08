@@ -21,11 +21,6 @@ public class FoodLogic : MonoBehaviour
     FoodType foodType;
     [SerializeField]
     FoodStatus foodStatus;
-    // Start is called before the first frame update
-    void Start()
-    {
-        foodStatus = FoodStatus.Raw;
-    }
 
     public void SetFoodStatus(FoodStatus status)
     {

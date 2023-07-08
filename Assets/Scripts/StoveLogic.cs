@@ -40,4 +40,17 @@ public class StoveLogic : MonoBehaviour
     {
         return objectOnTable;
     }
+    void Update()
+    {
+        objectOnTable = null;
+        RaycastHit hit;
+        Physics.Raycast(transform.position, transform.up, out hit, 2.0f);
+        if (hit.collider != null)
+        {
+            if (hit.collider.CompareTag("Cooker"))
+            {
+                objectOnTable = hit.collider.gameObject;
+            }
+        }
+    }
 }
