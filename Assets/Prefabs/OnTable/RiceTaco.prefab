@@ -212,8 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasPrefab: {fileID: 4321581362360443184, guid: e2c41c6e60dd62c4cb1a4291cdc20c2d, type: 3}
-  offset: {x: -1, y: 1}
-  spacing: {x: 5, y: 0}
+  offset: {x: -25, y: -50}
+  spacing: {x: 50, y: 0}
   m_iconPrefab:
   - {fileID: 935492408370415744, guid: 653734b819a22a54ea05d975afcdf753, type: 3}
   - {fileID: 4233554608919778953, guid: edadbcb14e41d7e4b916c1456e3e41de, type: 3}
