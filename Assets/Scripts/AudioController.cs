@@ -8,6 +8,8 @@ public class AudioController : MonoBehaviour
 
     AudioSource audioSource;
     [SerializeField]
+    GameObject bgmPlayer;
+    [SerializeField]
     AudioClip throwawaySound;
     [SerializeField]
     AudioClip cookCompleteSound;
@@ -21,8 +23,13 @@ public class AudioController : MonoBehaviour
     AudioClip timerBeepSound;
     [SerializeField]
     AudioClip timeUpSound;
+    [SerializeField]
+    AudioClip readySound;
+    [SerializeField]
+    AudioClip beginSound;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -39,7 +46,7 @@ public class AudioController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void PlayThrowawaySound()
     {
@@ -69,5 +76,22 @@ public class AudioController : MonoBehaviour
     public void PlayTimeUpSound()
     {
         audioSource.PlayOneShot(timeUpSound);
+    }
+    public void PlayReadySound()
+    {
+        audioSource.PlayOneShot(readySound);
+    }
+    public void PlayBeginSound()
+    {
+        audioSource.PlayOneShot(beginSound);
+    }
+    public void PlayBGM()
+    {
+        bgmPlayer.GetComponent<AudioSource>().Play();
+    }
+
+    public void StopBGM()
+    {
+        bgmPlayer.GetComponent<AudioSource>().Stop();
     }
 }

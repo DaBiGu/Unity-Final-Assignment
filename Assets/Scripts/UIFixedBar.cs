@@ -29,9 +29,14 @@ public class UIFixedBar : MonoBehaviour
         var tmp_canvas = GetComponentInChildren<Canvas>();
         if (tmp_canvas != null)
         {
-            Destroy(tmp_canvas.gameObject);
+            if (tmp_canvas.name.Equals("BarCanvas"))
+            {
+                Destroy(tmp_canvas.gameObject);
+            }
         }
         var canvas = Instantiate(canvasPrefab, transform);
+        canvas.name = "BarCanvas";
+        canvas.tag = "UIOverlay";
         //m_canvas = canvas.GetComponent<Canvas>();
         m_displayBar = Instantiate(m_barPrefab, canvas.transform);
         var position = screenPos + offset;

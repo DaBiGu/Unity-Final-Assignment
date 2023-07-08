@@ -15,13 +15,19 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI m_timeText;
     [SerializeField]
+    GameObject m_UICanvas;
+    [SerializeField]
     GameObject m_gameOverCanvas;
     [SerializeField]
     GameObject m_mainCamera;
+    [SerializeField]
+    GameObject m_timeUpSign;
+    [SerializeField]
+    GameObject m_goSign;
 
     List<PlateStatus> Orders = new();
     List<float> OrderTimers = new();
-    public float levelTimer = 210.0f;
+    public float levelTimer = 180.0f;
     public float orderTime = 90.0f;
     public float orderSpawnTime = 60.0f;
     float beepSpacing;
@@ -33,6 +39,9 @@ public class LevelController : MonoBehaviour
     const float ORDER_SPAWN_TIMING = 60.0f;
     const float BEEP_SPACING = 1.0f;
     int orderCount = 0;
+    bool m_isEndgame = false;
+    bool m_isStarting = true;
+    float countdown = 2.0f;
 
     private void Awake()
     {
@@ -61,28 +70,43 @@ public class LevelController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_isStarting)
+        {
+            m_goSign.SetActive(true);
+            if (countdown <= 0)
+            {
+                m_goSign.SetActive(false);
+                m_isStarting = false;
+            }
+            else
+            {
+                countdown -= Time.deltaTime;
+            }
+            return;
+        }
+
         // track each order timing
         for(int i = 0; i < orderCount; i++)
         {
             OrderTimers[i] -= Time.deltaTime;
-            //OrderDisplayLogic.Instance.SetTimebar(i, OrderTimers[i]);
+            OrderDisplayLogic.Instance.SetTimebar(i, OrderTimers[i]);
             if (OrderTimers[i] <= 0)
             {
                 // order is expired
-                //OrderDisplayLogic.Instance.ExpiredOrderDisplay(i);
+                OrderDisplayLogic.Instance.ExpiredOrderDisplay(i);
                 OrderTimers[i] = ORDER_TIMING;
                 //AudioController.Instance.PlayWrongSound();
                 tipStack = 0;
                 score -= (int)(SCORE_PER_ORDER * 0.6);
+                m_moneyText.text = score.ToString();
+                m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+                // m_tipStackText.text = tipStack.ToString();
             }
         }
-        // m_moneyText.text = score.ToString();
-        //m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
-        // m_tipStackText.text = tipStack.ToString();
 
         // track level timer
         levelTimer -= Time.deltaTime;
-        //m_timeText.text = string.Format("{0:D2}:{1:D2}", (int)levelTimer / 60, (int)levelTimer % 60); 
+        m_timeText.text = string.Format("{0:D2}:{1:D2}", (int)levelTimer / 60, (int)levelTimer % 60); 
         if (levelTimer <= 30.0f)
         {
             m_timeText.color = Color.yellow;
@@ -102,6 +126,7 @@ public class LevelController : MonoBehaviour
         if (orderSpawnTime <= 0)
         {
             GenerateOrder(1);
+            orderSpawnTime = ORDER_SPAWN_TIMING;
         }
         else
         {
@@ -125,7 +150,7 @@ public class LevelController : MonoBehaviour
                 OrderTimers.Add(orderTime);
                 orderCount++;
             }
-            //OrderDisplayLogic.Instance.AddOrderDisplay(random);
+            OrderDisplayLogic.Instance.AddOrderDisplay(random);
         }
     }
     public void DeliverOrder(PlateStatus order)
@@ -135,7 +160,7 @@ public class LevelController : MonoBehaviour
         {
             Orders.RemoveAt(orderIndex);
             OrderTimers.RemoveAt(orderIndex);
-            //OrderDisplayLogic.Instance.DeliverOrderDisplay(orderIndex);
+            OrderDisplayLogic.Instance.DeliverOrderDisplay(orderIndex);
             orderCount--;
             if (orderIndex == 0)
             {
@@ -147,8 +172,8 @@ public class LevelController : MonoBehaviour
             }
             score += SCORE_PER_ORDER + tipStack * TIP;
             m_moneyText.text = score.ToString();
-            //m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
-            m_tipStackText.text = tipStack.ToString();
+            m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+            //m_tipStackText.text = "x" + tipStack.ToString();
         }
     }
     int GetOrderIndex(PlateStatus order)
@@ -171,16 +196,40 @@ public class LevelController : MonoBehaviour
         return tipStack;
     }
 
-    void TimeUp()
+    public bool IsEndgame()
     {
+        return m_isEndgame;
+    }
 
+    public void TimeUp()
+    {
+        m_isEndgame = true;
+        //AudioController.Instance.PlayTimeUpSound();
+        StartCoroutine(DisplayGameOverCanvas());
+        m_timeUpSign.SetActive(true);
+        var scriptList1 = FindObjectsOfType<UIFixedBar>();
+        var scriptList2 = FindObjectsOfType<UIFixedIcon>();
+        foreach (var item in scriptList1)
+        {
+            item.enabled = false;
+        }
+        foreach (var item in scriptList2)
+        {
+            item.enabled = false;
+        }
+        var overlayList = GameObject.FindGameObjectsWithTag("UIOverlay");
+        foreach (var item in overlayList)
+        {
+            Destroy(item);
+        }
     }
 
     IEnumerator DisplayGameOverCanvas()
     {
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSeconds(3f);
 
-        m_gameOverCanvas.SetActive(true);
+
+        m_UICanvas.GetComponent<CanvasGroupLogic>().Hide();
         m_gameOverCanvas.GetComponent<CanvasGroupLogic>().Show();
         m_mainCamera.GetComponent<PostProcessVolume>().enabled = true;
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CanvasGroupLogic : MonoBehaviour
 {
-
+    [SerializeField]
     float m_alpha;
     [SerializeField]
     float m_alphaSpeed = 5.0f;
@@ -24,7 +24,6 @@ public class CanvasGroupLogic : MonoBehaviour
         if (m_alpha != m_canvasGroup.alpha)
         {
             m_canvasGroup.alpha = Mathf.Lerp(m_canvasGroup.alpha, m_alpha, m_alphaSpeed * Time.deltaTime);
-            Debug.Log(m_canvasGroup.alpha);
             if (Mathf.Abs(m_alpha - m_canvasGroup.alpha) <= 0.0001f)
             {
                 m_canvasGroup.alpha = m_alpha;
@@ -36,7 +35,8 @@ public class CanvasGroupLogic : MonoBehaviour
         m_alpha = 1;
         m_canvasGroup.alpha = 0;
 
-        m_canvasGroup.blocksRaycasts = true;//可以和该UI对象交互
+        m_canvasGroup.blocksRaycasts = true;
+        m_canvasGroup.interactable = true;
     }
 
     public void Hide()
@@ -44,6 +44,7 @@ public class CanvasGroupLogic : MonoBehaviour
         m_alpha = 0;
         m_canvasGroup.alpha = 1;
 
-        m_canvasGroup.blocksRaycasts = false;//不可以和该UI对象交互
+        m_canvasGroup.blocksRaycasts = false;
+        m_canvasGroup.interactable= false;
     }
 }

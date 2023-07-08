@@ -57,6 +57,7 @@ public class OrderDisplayLogic : MonoBehaviour
 
     public void SetTimebar(int orderDisplayQueueIndex, float time)
     {
+        //Debug.Log("Set the time bar");
         var temp = m_orderDisplayQueue[orderDisplayQueueIndex];
 
         var healthSystemComp = temp.GetComponent<HealthSystemComponent>();

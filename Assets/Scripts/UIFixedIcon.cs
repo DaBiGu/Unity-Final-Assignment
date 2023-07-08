@@ -29,9 +29,14 @@ public class UIFixedIcon : MonoBehaviour
         m_displayIcons = new();
         if (tmp_canvas != null)
         {
-            Destroy(tmp_canvas.gameObject);
+           if (tmp_canvas.name.Equals("IconCanvas"))
+            {
+                Destroy(tmp_canvas.gameObject);
+            }
         }
         canvas = Instantiate(canvasPrefab, transform);
+        canvas.name = "IconCanvas";
+        canvas.tag = "UIOverlay";
         //m_canvas = canvas.GetComponent<Canvas>();
         for (int i = 0; i < m_iconPrefab.Count; i++)
         {
