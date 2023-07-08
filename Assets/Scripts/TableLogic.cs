@@ -25,6 +25,7 @@ public class TableLogic : MonoBehaviour
 
     public void PlaceObject(GameObject target)
     {
+        Debug.Log(target.name);
         Vector3 targetPos = transform.position + new Vector3(0, transform.lossyScale.y, 0);
         if (objectOnTable != null && objectOnTable.CompareTag("Plate") && target.CompareTag("Food"))
         {
@@ -35,6 +36,14 @@ public class TableLogic : MonoBehaviour
             objectOnTable = Instantiate(target, targetPos, transform.rotation);
         }
         objectOnTable.transform.localScale = new Vector3(3, 3, 3);
+        if (objectOnTable.CompareTag("Food") && objectOnTable.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)
+        {
+            objectOnTable.transform.localScale = new Vector3(1, 1, 1);
+        }
+        if (objectOnTable.CompareTag("Food") && objectOnTable.GetComponent<FoodLogic>().GetFoodType() == FoodType.Meat)
+        {
+            objectOnTable.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
+        }
     }
     public GameObject TakeObject()
     {

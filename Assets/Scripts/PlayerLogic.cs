@@ -70,7 +70,7 @@ public class PlayerLogic : MonoBehaviour
                 // objectInHand = hit.collider.GetComponent<BoxLogic>().GetFoodType();
             }
         }
-        else if (hit.collider.CompareTag("Cooker"))
+        else if (hit.collider.CompareTag("Stove"))
         {
             GameObject cooker = hit.collider.GetComponent<StoveLogic>().GetCooker();
             if (Input.GetButtonDown("Pick_" + playerID))
@@ -82,7 +82,8 @@ public class PlayerLogic : MonoBehaviour
                 }
                 else if (objectInHand.CompareTag("Plate"))
                 {
-                    objectInHand.GetComponent<PlateLogic>().GetFood(cooker.GetComponent<CookerLogic>().TakeFood());
+                    objectInHand = objectInHand.GetComponent<PlateLogic>().GetFood(
+                        cooker.GetComponent<CookerLogic>().TakeFood());
                 }
             }
         }
