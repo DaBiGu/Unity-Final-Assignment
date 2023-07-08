@@ -13,6 +13,8 @@ TagManager:
   - Table
   - Stove
   - Trash Bin
+  - Chopping Board
+  - Plate Stacker
   layers:
   - Default
   - TransparentFX
