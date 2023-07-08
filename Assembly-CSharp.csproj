@@ -128,6 +128,7 @@
     <None Include="Assets\EasyTransitions\Shaders\MultiplyColor.shader" />
     <None Include="Assets\Import\Empty_Burrito_Tortilla\license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\Import\Trash_bin\license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\GB2312+ASCII_chars.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Sketchfab For Unity\Dependencies\Libraries\Ionic.Zip.Unity.dll" />

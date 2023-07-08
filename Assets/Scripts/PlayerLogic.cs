@@ -9,6 +9,8 @@ public class PlayerLogic : MonoBehaviour
     Transform spawnPoint;
     [SerializeField]
     int playerID;
+    [SerializeField]
+    GameObject emptyPlatePrefab;
 
     CharacterController characterController;
     Animator animator;
@@ -111,7 +113,7 @@ public class PlayerLogic : MonoBehaviour
                     }
                 }
             }
-            else if (Input.GetButtonDown("Action"))
+            else if (Input.GetButtonDown("Action_" + playerID))
             {
                 hit.collider.GetComponent<SinkLogic>().WashPlate();
             }
@@ -129,6 +131,26 @@ public class PlayerLogic : MonoBehaviour
                 else if (objectInHand.CompareTag("Plate") || objectInHand.CompareTag("Food"))
                 {
                     hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
+                    Destroy(objectInHand);
+                    objectInHand = null;
+                }
+            }
+        }
+        else if (hit.collider.CompareTag("Trash Bin"))
+        {
+            if (Input.GetButtonDown("Pick_" + playerID))
+            {
+                if (objectInHand.CompareTag("Plate"))
+                {
+                    Vector3 tempPosition = objectInHand.transform.position;
+                    Quaternion tempRotation = objectInHand.transform.rotation;
+                    Destroy(objectInHand);
+                    GameObject target = Instantiate(emptyPlatePrefab, tempPosition, tempRotation);
+                    objectInHand = target;
+                    target.transform.SetParent(spawnPoint);
+                }
+                else if (objectInHand.CompareTag("Food"))
+                {
                     Destroy(objectInHand);
                     objectInHand = null;
                 }

@@ -12,6 +12,7 @@ TagManager:
   - Sink
   - Table
   - Stove
+  - Trash Bin
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public enum CookerType
 {
@@ -30,6 +31,10 @@ public class CookerLogic : MonoBehaviour
     GameObject meatPrefab;
     [SerializeField]
     GameObject mushroomPrefab;
+    [SerializeField]
+    GameObject meatCookingPrefab;
+    [SerializeField]
+    GameObject mushroomCookingPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -56,12 +61,22 @@ public class CookerLogic : MonoBehaviour
                 target.transform.localScale = new Vector3(5, 5, 5);
                 // target.GetComponent<CookerLogic>().SetContainingFood(food);
             }
-            else if (food.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted)
+            else if (cookerType == CookerType.Pan)
             {
-                // containingFood = food;
-                Destroy(gameObject);
-                Instantiate(cookingPrefab, position, rotation);
-                progressBar.GetComponent<ProgressBarLogic>().StartProgress();
+                if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Meat &&
+                        food.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted)
+                {
+                    Destroy(gameObject);
+                    GameObject target = Instantiate(meatCookingPrefab, position, rotation);
+                    target.transform.localScale = new Vector3(5, 5, 5);
+                }
+                else if (food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Mushroom &&
+                            food.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted)
+                {
+                    Destroy(gameObject);
+                    GameObject target = Instantiate(mushroomCookingPrefab, position, rotation);
+                    target.transform.localScale = new Vector3(5, 5, 5);
+                }
             }
         }
     }

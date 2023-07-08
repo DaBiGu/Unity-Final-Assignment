@@ -1,0 +1,11 @@
+Model Information:
+* title:	Trash bin
+* source:	https://sketchfab.com/3d-models/trash-bin-cd5f04fb15dd4dad96259a4c17b11e86
+* author:	JanStano (https://sketchfab.com/JanStano)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Trash bin" (https://sketchfab.com/3d-models/trash-bin-cd5f04fb15dd4dad96259a4c17b11e86) by JanStano (https://sketchfab.com/JanStano) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
