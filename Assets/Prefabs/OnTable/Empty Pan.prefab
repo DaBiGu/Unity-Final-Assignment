@@ -66,10 +66,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5366650831601739498, guid: 4fb052047707ed645a77e875351e3a5c, type: 3}
       propertyPath: m_Name
-      value: KitchenProps_02 Variant
+      value: Empty Pan
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5366650831601739498, guid: 4fb052047707ed645a77e875351e3a5c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -913661446998583169}
   m_SourcePrefab: {fileID: 100100000, guid: 4fb052047707ed645a77e875351e3a5c, type: 3}
+--- !u!1 &8470485092723607272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5366650831601739498, guid: 4fb052047707ed645a77e875351e3a5c, type: 3}
+  m_PrefabInstance: {fileID: 4609180434635776002}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-913661446998583169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470485092723607272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a34999cba6c4a0848924d5f521b7b527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cookingPrefab: {fileID: 0}
+  emptyPrefab: {fileID: 0}
+  progressBar: {fileID: 0}
+  cookerType: 0
+  containingFood: 0
+  ricePrefab: {fileID: 0}
+  meatPrefab: {fileID: 0}
+  mushroomPrefab: {fileID: 0}
+  meatCookingPrefab: {fileID: 0}
+  mushroomCookingPrefab: {fileID: 0}
