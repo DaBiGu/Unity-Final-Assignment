@@ -159,6 +159,29 @@ public class PlayerLogic : MonoBehaviour
                 }
             }
         }
+        else if (hit.collider.CompareTag("Chopping Board"))
+        {
+            if (Input.GetButtonDown("Pick_" + playerID))
+            {
+                if (objectInHand == null)
+                {
+                    objectInHand = hit.collider.GetComponent<ChoppingBoardLogic>().TakeObject();
+                }
+                else if (objectInHand.CompareTag("Food"))
+                {
+                    bool result = hit.collider.GetComponent<ChoppingBoardLogic>().PlaceObject(objectInHand);
+                    if (result)
+                    {
+                        Destroy(objectInHand);
+                        objectInHand = null;
+                    }
+                }             
+            }
+            else if (Input.GetButtonDown("Use_" + playerID))
+            {
+                hit.collider.GetComponent<ChoppingBoardLogic>().CutFood();
+            }
+        }
     }
     public Transform GetSpawnPoint()
     {

@@ -32,29 +32,35 @@ public class ChoppingBoardLogic : MonoBehaviour
     {
         
     }
-    public void PlaceObject(GameObject target)
+    public bool PlaceObject(GameObject target)
     {
-        if (objectOnTable != null || !target.CompareTag("Food")) return;
+        if (objectOnTable != null || !target.CompareTag("Food")) return false;
         if (target.GetComponent<FoodLogic>().GetFoodType() == FoodType.Meat)
         {
+            if (target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted) return false;
             objectOnTable = Instantiate(rawMeatPrefab, targetPos, transform.rotation);
         }
         else if (target.GetComponent<FoodLogic>().GetFoodType() == FoodType.Mushroom)
         {
+            if (target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted) return false;
             objectOnTable = Instantiate(rawMushroomPrefab, targetPos, transform.rotation);
         }
+        return true;
     }
     public void CutFood()
-    {
+    { 
+        Vector3 targetPos = transform.position + new Vector3(0, transform.lossyScale.y, 0);
         if (objectOnTable.GetComponent<FoodLogic>().GetFoodType() == FoodType.Meat)
         {
+            if (objectOnTable.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted) return;
             Destroy(objectOnTable);
-            objectOnTable = Instantiate(cuttedMeatPrefab, transform.position, transform.rotation);
+            objectOnTable = Instantiate(cuttedMeatPrefab, targetPos, transform.rotation);
         }
         else if (objectOnTable.GetComponent<FoodLogic>().GetFoodType() == FoodType.Mushroom)
         {
+            if (objectOnTable.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted) return;
             Destroy(objectOnTable);
-            objectOnTable = Instantiate(cuttedMeatPrefab, transform.position, transform.rotation);
+            objectOnTable = Instantiate(cuttedMushroomPrefab, targetPos, transform.rotation);
         }
     }
     public GameObject TakeObject()
