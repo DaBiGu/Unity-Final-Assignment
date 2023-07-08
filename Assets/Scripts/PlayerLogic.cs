@@ -54,6 +54,7 @@ public class PlayerLogic : MonoBehaviour
         }
     }
 
+
     void PickUp()
     {
         float pickUpRange = 3f;

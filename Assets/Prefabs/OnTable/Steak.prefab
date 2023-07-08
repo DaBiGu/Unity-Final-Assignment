@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8119398754169052075, guid: 10ab30527b9bc8a4995e798ac0706a37, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8202614754564459210, guid: 10ab30527b9bc8a4995e798ac0706a37, type: 3}
       propertyPath: m_Name
       value: Steak

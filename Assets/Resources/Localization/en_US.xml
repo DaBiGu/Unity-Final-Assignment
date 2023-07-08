@@ -2,7 +2,7 @@
 <Localization>
     <Entry>
         <Key>Title</Key>
-        <Value>Kitchen Runout - Placeholder</Value>
+        <Value>Kitchen Overdrive</Value>
     </Entry>
     <Entry>
         <Key>Start</Key>
@@ -19,5 +19,25 @@
     <Entry>
         <Key>TipText</Key>
         <Value>TIPS&#x000A;×{0}</Value>
+    </Entry>
+    <Entry>
+        <Key>Go</Key>
+        <Value>Go!</Value>
+    </Entry>
+    <Entry>
+        <Key>TimesUp</Key>
+        <Value>Time's Up！</Value>
+    </Entry>
+    <Entry>
+        <Key>YourScore</Key>
+        <Value>Your Score</Value>
+    </Entry>
+    <Entry>
+        <Key>PlayAgain</Key>
+        <Value>Play Again</Value>
+    </Entry>
+    <Entry>
+        <Key>QuitToMenu</Key>
+        <Value>Quit to Main Menu</Value>
     </Entry>
 </Localization>

@@ -24,6 +24,8 @@ public class LevelController : MonoBehaviour
     GameObject m_timeUpSign;
     [SerializeField]
     GameObject m_goSign;
+    [SerializeField]
+    TextMeshProUGUI m_endgameScore;
 
     List<PlateStatus> Orders = new();
     List<float> OrderTimers = new();
@@ -36,7 +38,7 @@ public class LevelController : MonoBehaviour
     const int SCORE_PER_ORDER = 100;
     const int TIP = 10;
     const float ORDER_TIMING = 90.0f;
-    const float ORDER_SPAWN_TIMING = 60.0f;
+    const float ORDER_SPAWN_TIMING = 30.0f;
     const float BEEP_SPACING = 1.0f;
     int orderCount = 0;
     bool m_isEndgame = false;
@@ -59,6 +61,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioController.Instance.PlayBGM();
         beepSpacing = BEEP_SPACING;
         //for (int i = 0; i < Orders.Capacity; i++)
         //{
@@ -96,11 +99,11 @@ public class LevelController : MonoBehaviour
                 // order is expired
                 OrderDisplayLogic.Instance.ExpiredOrderDisplay(i);
                 OrderTimers[i] = ORDER_TIMING;
-                //AudioController.Instance.PlayWrongSound();
+                AudioController.Instance.PlayWrongSound();
                 tipStack = 0;
                 score -= (int)(SCORE_PER_ORDER * 0.6);
                 m_moneyText.text = score.ToString();
-                //m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+                m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
                 // m_tipStackText.text = tipStack.ToString();
             }
         }
@@ -115,7 +118,7 @@ public class LevelController : MonoBehaviour
             if (beepSpacing <= 0)
             {
                 beepSpacing = BEEP_SPACING;
-                //AudioController.Instance.PlayTimerBeepSound();
+                AudioController.Instance.PlayTimerBeepSound();
             }
         }
         if (levelTimer <= 0)
@@ -126,7 +129,7 @@ public class LevelController : MonoBehaviour
 
         if (orderSpawnTime <= 0)
         {
-            GenerateOrder(1);
+            GenerateOrder(2);
             orderSpawnTime = ORDER_SPAWN_TIMING;
         }
         else
@@ -164,6 +167,7 @@ public class LevelController : MonoBehaviour
             Orders.RemoveAt(orderIndex);
             OrderTimers.RemoveAt(orderIndex);
             OrderDisplayLogic.Instance.DeliverOrderDisplay(orderIndex);
+            AudioController.Instance.PlayOrderCompleteSound();
             orderCount--;
             if (orderIndex == 0)
             {
@@ -175,7 +179,7 @@ public class LevelController : MonoBehaviour
             }
             score += SCORE_PER_ORDER + tipStack * TIP;
             m_moneyText.text = score.ToString();
-            //m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+            m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
             //m_tipStackText.text = "x" + tipStack.ToString();
             return true;
         }
@@ -210,7 +214,8 @@ public class LevelController : MonoBehaviour
     public void TimeUp()
     {
         m_isEndgame = true;
-        //AudioController.Instance.PlayTimeUpSound();
+        AudioController.Instance.PlayTimeUpSound();
+        AudioController.Instance.StopBGM();
         StartCoroutine(DisplayGameOverCanvas());
         m_timeUpSign.SetActive(true);
         var scriptList1 = FindObjectsOfType<UIFixedBar>();
@@ -244,7 +249,7 @@ public class LevelController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
 
-
+        m_endgameScore.text = score.ToString();
         m_UICanvas.GetComponent<CanvasGroupLogic>().Hide();
         m_gameOverCanvas.GetComponent<CanvasGroupLogic>().Show();
         m_mainCamera.GetComponent<PostProcessVolume>().enabled = true;

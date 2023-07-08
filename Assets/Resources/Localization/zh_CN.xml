@@ -2,7 +2,7 @@
 <Localization>
     <Entry>
         <Key>Title</Key>
-        <Value>Kitchen Runout - 占位符</Value>
+        <Value>急速厨房</Value>
     </Entry>
     <Entry>
         <Key>Start</Key>
@@ -19,5 +19,25 @@
     <Entry>
         <Key>TipText</Key>
         <Value>小费&#x000A;×{0}</Value>
+    </Entry>
+    <Entry>
+        <Key>Go</Key>
+        <Value>开始！</Value>
+    </Entry>
+    <Entry>
+        <Key>TimesUp</Key>
+        <Value>时间到！</Value>
+    </Entry>
+    <Entry>
+        <Key>YourScore</Key>
+        <Value>你的分数</Value>
+    </Entry>
+    <Entry>
+        <Key>HighScore</Key>
+        <Value>分数纪录</Value>
+    </Entry>
+    <Entry>
+        <Key>NewRecord</Key>
+        <Value>新纪录</Value>
     </Entry>
 </Localization>
