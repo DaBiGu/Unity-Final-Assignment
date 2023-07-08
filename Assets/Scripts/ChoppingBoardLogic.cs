@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ChoppingBoardLogic : MonoBehaviour
 {
-    GameObject player;
+    GameObject[] players;
     GameObject objectOnTable;
     Transform spawnPoint;
     Vector3 targetPos;
@@ -21,8 +21,8 @@ public class ChoppingBoardLogic : MonoBehaviour
     void Start()
     {
         objectOnTable = null;
-        player = GameObject.FindWithTag("Player");
-        spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+        players = GameObject.FindGameObjectsWithTag("Player");
+        // spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
         targetPos = transform.position + new Vector3(0, transform.lossyScale.y, 0);
 
     }
@@ -63,14 +63,22 @@ public class ChoppingBoardLogic : MonoBehaviour
             objectOnTable = Instantiate(cuttedMushroomPrefab, targetPos, transform.rotation);
         }
     }
-    public GameObject TakeObject()
+    public GameObject TakeObject(int playerID)
     {
         GameObject target = null;
+        Transform spawnPoint = null;
+        foreach (GameObject player in players)
+        {
+            if (player.GetComponent<PlayerLogic>().GetPlayerID() == playerID)
+            {
+                spawnPoint = player.GetComponent<PlayerLogic>().GetSpawnPoint();
+            }
+        }
         if (objectOnTable != null)
         {
             target = Instantiate(objectOnTable, spawnPoint.position, spawnPoint.rotation);
             target.transform.SetParent(spawnPoint.transform);
-            Debug.Log("Food taken.");
+            // Debug.Log("Food taken.");
             Destroy(objectOnTable);
             objectOnTable = null;
         }

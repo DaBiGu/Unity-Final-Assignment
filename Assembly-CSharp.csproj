@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\StoveLogic.cs" />
     <Compile Include="Assets\Scripts\LocString.cs" />
     <Compile Include="Assets\Scripts\AudioController.cs" />
+    <Compile Include="Assets\Scripts\EndgameMenuLogic.cs" />
     <Compile Include="Assets\Sketchfab For Unity\Scripts\AssetBrowser\SketchfabBrowserManager.cs" />
     <Compile Include="Assets\Scripts\GoalLogic.cs" />
     <Compile Include="Assets\Scripts\CookerLogic.cs" />

@@ -100,7 +100,7 @@ public class LevelController : MonoBehaviour
                 tipStack = 0;
                 score -= (int)(SCORE_PER_ORDER * 0.6);
                 m_moneyText.text = score.ToString();
-                m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+                //m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
                 // m_tipStackText.text = tipStack.ToString();
             }
         }
@@ -138,25 +138,27 @@ public class LevelController : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            int random = Random.Range(0, 2);
+           int random = Random.Range(0, 3);
             if (random <= 1)
             {
                 Orders.Add(PlateStatus.withTaco_Rice_Meat);
                 OrderTimers.Add(orderTime);
                 orderCount++;
+                OrderDisplayLogic.Instance.AddOrderDisplay(0);
             }
             else
             {
                 Orders.Add(PlateStatus.withTaco_Rice_Mushroom);
                 OrderTimers.Add(orderTime);
                 orderCount++;
+                OrderDisplayLogic.Instance.AddOrderDisplay(1);
             }
-            OrderDisplayLogic.Instance.AddOrderDisplay(random);
         }
     }
-    public void DeliverOrder(PlateStatus order)
+    public bool DeliverOrder(PlateStatus order)
     {
         int orderIndex = GetOrderIndex(order);
+        Debug.Log(orderIndex);
         if (orderIndex != -1)
         {
             Orders.RemoveAt(orderIndex);
@@ -173,14 +175,17 @@ public class LevelController : MonoBehaviour
             }
             score += SCORE_PER_ORDER + tipStack * TIP;
             m_moneyText.text = score.ToString();
-            m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
+            //m_tipStackText.text = string.Format(LocalizationManager.Instance.GetLocString("TipText"), tipStack);
             //m_tipStackText.text = "x" + tipStack.ToString();
+            return true;
         }
+        return false;
     }
     int GetOrderIndex(PlateStatus order)
     {
         for(int i = 0; i < orderCount; i++)
         {
+            Debug.Log(Orders[i]);
             if (Orders[i] == order)
             {
                 return i;
