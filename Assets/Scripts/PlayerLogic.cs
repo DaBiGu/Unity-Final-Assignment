@@ -113,7 +113,7 @@ public class PlayerLogic : MonoBehaviour
                     }
                 }
             }
-            else if (Input.GetButtonDown("Action"))
+            else if (Input.GetButtonDown("Action_" + playerID))
             {
                 hit.collider.GetComponent<SinkLogic>().WashPlate();
             }
