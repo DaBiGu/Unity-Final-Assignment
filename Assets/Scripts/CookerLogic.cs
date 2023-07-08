@@ -52,6 +52,7 @@ public class CookerLogic : MonoBehaviour
     }
     public void DropFood(GameObject food)
     {
+        Vector3 targetPos = transform.position + new Vector3(0, transform.lossyScale.y, 0);
         if (food.CompareTag("Food"))
         {
             if (cookerType == CookerType.Boiler && food.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)

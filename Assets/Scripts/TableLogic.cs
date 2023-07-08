@@ -23,17 +23,23 @@ public class TableLogic : MonoBehaviour
         }
     }
 
-    public void PlaceObject(GameObject target)
+    public bool PlaceObject(GameObject target)
     {
-        Debug.Log(target.name);
+        bool status = false;
         Vector3 targetPos = transform.position + new Vector3(0, transform.lossyScale.y, 0);
         if (objectOnTable != null && objectOnTable.CompareTag("Plate") && target.CompareTag("Food"))
         {
-            objectOnTable = objectOnTable.GetComponent<PlateLogic>().GetFood(target);
+            if (target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted ||
+                target.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cooked)
+            {
+                objectOnTable = objectOnTable.GetComponent<PlateLogic>().GetFood(target);
+                status = true;
+            }
         }
-        else
+        else if (objectOnTable == null)
         {
             objectOnTable = Instantiate(target, targetPos, transform.rotation);
+            status = true;
         }
         objectOnTable.transform.localScale = new Vector3(3, 3, 3);
         if (objectOnTable.CompareTag("Food") && objectOnTable.GetComponent<FoodLogic>().GetFoodType() == FoodType.Rice)
@@ -44,6 +50,7 @@ public class TableLogic : MonoBehaviour
         {
             objectOnTable.transform.localScale = new Vector3(7.5f, 7.5f, 7.5f);
         }
+        return status;
     }
     public GameObject TakeObject()
     {

@@ -79,8 +79,11 @@ public class PlayerLogic : MonoBehaviour
             {
                 if (objectInHand.CompareTag("Food"))
                 {
-                    cooker.GetComponent<CookerLogic>().DropFood(objectInHand);
-                    Destroy(objectInHand);
+                    if (objectInHand.GetComponent<FoodLogic>().GetFoodStatus() == FoodStatus.Cutted)
+                    {
+                        cooker.GetComponent<CookerLogic>().DropFood(objectInHand);
+                        Destroy(objectInHand);
+                    }
                 }
                 else if (objectInHand.CompareTag("Plate"))
                 {
@@ -130,9 +133,12 @@ public class PlayerLogic : MonoBehaviour
                 }
                 else if (objectInHand.CompareTag("Plate") || objectInHand.CompareTag("Food"))
                 {
-                    hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
-                    Destroy(objectInHand);
-                    objectInHand = null;
+                    bool result = hit.collider.GetComponent<TableLogic>().PlaceObject(objectInHand);
+                    if (result)
+                    {
+                        Destroy(objectInHand);
+                        objectInHand = null;
+                    }
                 }
             }
         }
@@ -154,6 +160,29 @@ public class PlayerLogic : MonoBehaviour
                     Destroy(objectInHand);
                     objectInHand = null;
                 }
+            }
+        }
+        else if (hit.collider.CompareTag("Chopping Board"))
+        {
+            if (Input.GetButtonDown("Pick_" + playerID))
+            {
+                if (objectInHand == null)
+                {
+                    objectInHand = hit.collider.GetComponent<ChoppingBoardLogic>().TakeObject();
+                }
+                else if (objectInHand.CompareTag("Food"))
+                {
+                    bool result = hit.collider.GetComponent<ChoppingBoardLogic>().PlaceObject(objectInHand);
+                    if (result)
+                    {
+                        Destroy(objectInHand);
+                        objectInHand = null;
+                    }
+                }             
+            }
+            else if (Input.GetButtonDown("Use_" + playerID))
+            {
+                hit.collider.GetComponent<ChoppingBoardLogic>().CutFood();
             }
         }
     }
